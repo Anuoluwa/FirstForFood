@@ -2,14 +2,14 @@ import orders from '../models/orders';
 
 
 export default class Orders {
-  static async GetAllOrders(req, res) {
+  static async getAllOrders(req, res) {
     try {
       return await res.json(orders);
     } catch (err) {
       res.status(404).json({ message: 'Order not found!', err });
     }
   }
-  static async GetOneOrder(req, res) {
+  static async getOneOrder(req, res) {
     const orderId = parseInt(req.params.id, 10);
     try {
       const orderItem = await orders.filter(order => order.orderId == orderId)[0];
@@ -21,7 +21,7 @@ export default class Orders {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
-  static AddOrder(req, res) {
+  static addOrder(req, res) {
     const newOrder = {
       orderId: orders.length + 1,
       date: req.body.date,
@@ -33,7 +33,7 @@ export default class Orders {
     orders.push(newOrder);
     res.status(201).json({ message: 'order was created successfully', data: orders });
   }
-  static async UpdateOrder(req, res) {
+  static async updateOrder(req, res) {
     try{
     const orderId = parseInt(req.params.id, 10);
     const order = await orders.filter(order => order.orderId == orderId)[0];
@@ -60,4 +60,15 @@ export default class Orders {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
+  static async cancelOrder (req, res) {
+    try{
+      const orderId = parseInt(req.params.id, 10);
+      const order = orders.filter(order => order.orderId == orderId)[0];
+      const index = orders.indexOf(order);
+      orders.splice(index, 1);
+      res.status(200).json({ message: `The is ${orderId} has been removed.`});
+} catch (err) {
+  res.status(500).json({ message: 'Sorry about that, not available', err });
+}
+}    
 }
