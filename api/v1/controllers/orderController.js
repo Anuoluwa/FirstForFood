@@ -21,4 +21,16 @@ export default class Orders {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
+  static AddOrder(req, res) {
+    const newOrder = {
+      orderId: orders.length + 1,
+      date: req.body.date,
+      foodItem: req.body.foodItem,
+      quantity: req.body.quantity,
+      price: req.body.price,
+      address: req.body.address,
+    };
+    orders.push(newOrder);
+    res.status(201).json({ message: 'order was created successfully', data: orders });
+  }
 }
