@@ -58,10 +58,13 @@ describe('GET /orders/:id', () => {
       .set('Accept', 'application/json')
       .expect(200)
       .end((err, res) => {
-        expect(res.body.id).to.not.equal(null);
-        expect(res.body.title).to.not.equal(null);
-        expect(res.body.body).to.not.equal(null);
-        expect(res.body.answers).to.not.equal(null);
+        expect(res.body.orderId).to.not.equal(null);
+        expect(res.body.date).to.not.equal(null);
+        expect(res.body.foodItem).to.not.equal(null);
+        expect(res.body.quantity).to.not.equal(null);
+        expect(res.body.price).to.not.equal(null);
+        expect(res.body.address).to.not.equal(null);
+        expect(res.body.customerDetails).to.not.equal(null);
         done();
       });
   });
