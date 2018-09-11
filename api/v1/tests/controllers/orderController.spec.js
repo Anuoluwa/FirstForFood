@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import request from 'supertest';
-import app from '../../../server';
+import app from '../../../../server';
 
 describe('Test suite for Server ', () => {
   it("should return 'wlecome to LiteStack API v1!'", () => {
@@ -49,5 +49,33 @@ describe('Test suite for orders endpoint controller', () => {
           done();
         });
     });
+  });
+});
+describe('GET /orders/:id', () => {
+  it('should be an object with keys and values that are not null', (done) => {
+    request(app)
+      .get('/api/v1/orders/1')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.orderId).to.not.equal(null);
+        expect(res.body.date).to.not.equal(null);
+        expect(res.body.foodItem).to.not.equal(null);
+        expect(res.body.quantity).to.not.equal(null);
+        expect(res.body.price).to.not.equal(null);
+        expect(res.body.address).to.not.equal(null);
+        expect(res.body.customerDetails).to.not.equal(null);
+        done();
+      });
+  });
+  it('should be an object with keys and values', (done) => {
+    request(app)
+      .get('/api/v1/orders/1')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body).to.be.a('object');
+        done();
+      });
   });
 });

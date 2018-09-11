@@ -1,39 +1,42 @@
 {
   "name": "firstforfood",
   "version": "1.0.0",
-  "description": "food ordering app",
-  "main": "app.js",
+  "description": "Fast food ordering app",
+  "main": "Versioning.js",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
-    "eslint-watch": "^4.0.2",
     "express": "^4.16.3",
     "express-api-versioning": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/traverse": "^7.0.0",
     "chai": "^4.1.2",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-watch": "^4.0.2",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "supertest": "^3.3.0"
   },
   "scripts": {
     "start": "nodemon --watch server.js --exec babel-node -- server.js",
-    "test": "--require babel-register mocha \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
-    "lint": " esw server.js versioning.js api/v1/* --color",
+    "test": " mocha  --require @babel/polyfill --require @babel/register \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
+    "lint": " esw server.js Versioning.js api/v1/* --color",
     "lint-watch": "npm run lint -- --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Anuoluwa/FirstForFood.git"
   },
-  "author": "anuoluwapo Apiti\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[A",
+  "author": "Anuoluwa Apiti",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Anuoluwa/FirstForFood/issues"
