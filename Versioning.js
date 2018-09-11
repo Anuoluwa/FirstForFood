@@ -12,7 +12,7 @@ app.use(expressApiVersioning({
   instance: app,
 }, (error, req, res, next) => {
   if (error && error.code === 104) {
-    res.status(200).send({ message: 'Welcome!' });
+    res.status(200).send({ message: 'Welcome to SwiftFood API' });
   }
   if (error && error.code !== 104) {
     res.status(500).send({ message: error.message });
