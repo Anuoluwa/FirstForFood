@@ -1,0 +1,37 @@
+{
+  "name": "firstforfood",
+  "version": "1.0.0",
+  "description": "food ordering app",
+  "main": "app.js",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "start": "nodemon --watch server.js --exec babel-node -- server.js",
+    "test": " nyc --reporter=html --reporter=text --require babel-polyfill --require babel-register mocha \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
+    "lint": " esw app.js server.js api/v1/* --color",
+    "lint-watch": "npm run lint -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anuoluwa/FirstForFood.git"
+  },
+  "author": "anuoluwapo Apiti\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[A",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anuoluwa/FirstForFood/issues"
+  },
+  "homepage": "https://github.com/Anuoluwa/FirstForFood#readme"
+}
