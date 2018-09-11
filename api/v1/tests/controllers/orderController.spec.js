@@ -147,3 +147,32 @@ describe('POST /orders/, to post single order resource', () => {
     });
   });
 });
+describe('PUT /orders/, to update single order resource', () => {
+  describe('PUT /orders', () => {
+    it('it return object in json', (done) => {
+      request(app)
+        .put('/api/v1/orders')
+        .send({
+          orderId: 1,
+          date: '2017-11-18 13:21:10',
+          foodItem: 'Appetizer - Veg Assortment',
+          quantity: 3,
+          price: '$6.40',
+          address: '153 Muir Crossing',
+          customerDetails: [{}, {}],
+        })
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          expect(res.body.orderId).to.not.equal(null);
+          expect(res.body.date).to.not.equal(null);
+          expect(res.body.foodItem).to.not.equal(null);
+          expect(res.body.quantity).to.not.equal(null);
+          expect(res.body.price).to.not.equal(null);
+          expect(res.body.address).to.not.equal(null);
+          expect(res.body.customerDetails).to.not.equal(null);
+          done();
+        });
+    });
+  });
+});
