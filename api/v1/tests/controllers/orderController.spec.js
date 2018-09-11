@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import request from 'supertest';
-import app from '../../../server';
+import app from '../../../../server';
 
 describe('Test suite for Server ', () => {
   it("should return 'wlecome to LiteStack API v1!'", () => {
