@@ -51,3 +51,28 @@ describe('Test suite for orders endpoint controller', () => {
     });
   });
 });
+describe('GET /orders/:id', () => {
+  it('should be an object with keys and values that are not null', (done) => {
+    request(app)
+      .get('/api/v1/orders/1')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.id).to.not.equal(null);
+        expect(res.body.title).to.not.equal(null);
+        expect(res.body.body).to.not.equal(null);
+        expect(res.body.answers).to.not.equal(null);
+        done();
+      });
+  });
+  it('should be an object with keys and values', (done) => {
+    request(app)
+      .get('/api/v1/orders/1')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body).to.be.a('object');
+        done();
+      });
+  });
+});
