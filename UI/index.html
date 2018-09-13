@@ -31,38 +31,127 @@
                     <a href=>Menu</a>
                 </li>
             </ul>
-            <a href="" class="header-login signup">Sign Up</a>
-            <a href="" class="header-login">Log In</a>
+            <button id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'" style="width:auto;">LOG IN</button>
+            <button class="header-login" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">SIGN UP</button>
         </nav>
     </header>
+    <!-- modal -->
+    <section>
+            <div id="signinform" class="modal">
+                <form class="modal-content animate" action="profile.html">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('signinform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+    
+                    <div class="modal-container">
+                        <div class="modalTab">
+                            <label id="email-label" for="email">
+                                <strong>*Email:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
+                        </div>
+    
+    
+                        <div class="modalTab">
+                            <label id="password-label" for="password">
+                                <strong>*Password:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password" required>
+                        </div>
+    
+    
+                        <button id="button" class="submit" type="submit">Sign In</button>
+                    </div>
+    
+                    <div class="modal-container signup-div" style="background-color:#f1f1f1">
+                        <span class="psw">Don't have an account yet?
+                            <a href="#">Sign Up!</a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <!-- signup-->
+            <div id="signupform" class="modal">
+                <form class="modal-content animate" action="signup.html">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('signupform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+    
+                    <div class="modal-container">
+                        <div class="modalTab">
+                            <label id="username-label" for="username">
+                                <strong>*Username:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" autofocus type="text" name="username" id="username" minlength="6" maxlength="10" placeholder="Enter your username">
+                        </div>
+                        <div class="modalTab">
+                            <label id="email-label" for="email">
+                                <strong>*Email:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
+                        </div>
+    
+    
+                        <div class="modalTab">
+                            <label id="password-label" for="password">
+                                <strong>*Password:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password" required>
+                        </div>
+    
+    
+                        <button id="button" class="submit" type="submit">Sign In</button>
+                    </div>
+    
+                    <div class="modal-container signup-div" style="background-color:#f1f1f1">
+                        <span class="psw">Don't have an account yet?
+                            <a href="#">Sign Up!</a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+    
+        </section>
     <!-- Hero -->
-
     <section class="hero">
         <div class="vertical-banner">
             <h2>Your favorite foods with a push of a button</h2>
-            <h2>Make your day special with delicious treats</P>
-            <h2>Enjoy our tasty treats by placing the order now.</h2>
-            <button class="banner-btn" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order Now!</button>
+            <h2>Make your day special with delicious treats
+                </P>
+                <h2>Enjoy our tasty treats by placing the order now.</h2>
+                <button class="banner-btn" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order
+                    Now!</button>
         </div>
     </section>
 
     <div class="wrapper">
         <section class="index-links">
-                <div class="index-boxlink">
-                    <i class="fas fa-concierge-bell fa-3x"></i>
-                    <h2>Easy</h2>
-                    <p>With our online ordering convenience, your favorite food choices stay within your reach always. Whenever you feel the need to satisfy your taste buds, you can come straight to our portal and place your order. It takes a few simple steps of the order and we quickly respond to your requests.</p>
-                </div>
-                <div class="index-boxlink">
-                    <i class="far fa-clock fa-3x"></i>
-                    <h2>Anywhere, Anytime</h2>
-                    <p>Our quality of food makes us popular among our customers. We ensure that the food reaches you in no time. This way, you get to enjoy the warmth and freshness of the fast food dishes. Plus, there are amazing offers on various fast food choices that enhance the pleasure</p>
-                </div>
-                <div class="index-boxlink">
-                    <i class="fas fa-truck fa-3x"></i>
-                    <h2>Monitor Your Orders</h2>
-                    <p>The factors such as the quality of food, the convenience of ordering and the services related to the delivery become important. So, you need a restaurant that offers all the qualities and is available for you anytime you desire.</p>
-                </div>
+            <div class="index-boxlink">
+                <i class="fas fa-concierge-bell fa-3x"></i>
+                <h2>Easy</h2>
+                <p>With our online ordering convenience, your favorite food choices stay within your reach always. Whenever
+                    you feel the need to satisfy your taste buds, you can come straight to our portal and place your order.
+                    It takes a few simple steps of the order and we quickly respond to your requests.</p>
+            </div>
+            <div class="index-boxlink">
+                <i class="far fa-clock fa-3x"></i>
+                <h2>Anywhere, Anytime</h2>
+                <p>Our quality of food makes us popular among our customers. We ensure that the food reaches you in no time.
+                    This way, you get to enjoy the warmth and freshness of the fast food dishes. Plus, there are amazing
+                    offers on various fast food choices that enhance the pleasure</p>
+            </div>
+            <div class="index-boxlink">
+                <i class="fas fa-truck fa-3x"></i>
+                <h2>Monitor Your Orders</h2>
+                <p>The factors such as the quality of food, the convenience of ordering and the services related to the delivery
+                    become important. So, you need a restaurant that offers all the qualities and is available for you anytime
+                    you desire.</p>
+            </div>
         </section>
     </div>
     <!-- Footer -->
