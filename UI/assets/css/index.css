@@ -1,0 +1,354 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*
+  ========================================
+  ******** custom styling *******
+  ========================================
+*/
+
+* {
+    text-decoration: none;
+}
+
+body {
+    color: #f2f2f2;
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a {
+    color: #5FB007;
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgba(119,176,61,0.5);
+  }
+
+/*
+  ========================================
+  Primary header
+  ========================================
+*/
+
+header {
+    background-color: #f2f2f2;
+    width: 100%;
+    height: 100px;
+}
+
+header .logo {
+    font-size: 35px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    line-height: 44px;
+    padding: 15px 0;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header nav ul {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+header nav ul li {
+    display: inline-block;
+    float: left;
+    list-style: none;
+    padding: 0 16px;
+    font-weight: 600;
+}
+
+header nav ul li a {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+header .header-request {
+    display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    header .logo {
+        padding: 0px 20px 0px 40px;
+        margin: 31px 0;
+        text-align: left;
+        line-height: 38px;
+        border-right: 3px solid #111;
+        float: left;
+    }
+    header nav ul {
+        margin: 20px 0px 0px 20px;
+        float: left;
+    }
+    header nav ul li a {
+        line-height: 60px;
+    }
+    header .header-login {
+         display: block;
+         font-size: 16px;
+         color: #111;
+         text-transform:  uppercase;
+         line-height: 38px;
+         border: 2px solid #91B02C;
+         float: right;
+         border-radius: 50px;
+         margin-right: 40px;
+         margin-top: 30px;
+         padding: 0 20px;
+         font-weight: 400;
+     }
+     .signup {
+        background: rgb(253, 208, 9);
+     }
+
+    header .header-request {
+        display: block;
+        font-size: 16px;
+        color: #111;
+        text-transform: uppercase;
+        line-height: 38px;
+        border: 1px solid #111;
+        float: right;
+        margin-right: 40px;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+/*
+  ========================================
+  Home
+  ========================================
+*/
+
+.hero {
+    color: #fff;
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-image: url('../images/snack.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    line-height: 44px;
+    display: table;
+}
+
+.vertical-banner {
+    padding: 40px 70px 0 0;
+    display: table-cell;
+    vertical-align: left;
+    float: right;
+}
+.banner-btn {
+    padding: 30px,0 0 0;
+    display: block;
+    margin: 25px auto;
+    font-size: 1.5em;
+    border: 0;
+    color:  rgb(253, 208, 9);
+    background: rgb(231, 67, 67);
+    border-radius: 50px;
+    padding: 12px 14px;
+    cursor: pointer;
+}
+
+.hero h2 {
+    color: rgb(73, 238, 8);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 43px;
+    text-align: center;
+}
+
+.hero p {
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
+    text-shadow: 2px 2px 8px #111;
+}
+
+.teaser a:hover h3 {
+    color: #a9b2b9;
+}
+
+.index-links div {
+    margin: 16px 16px 0;
+    padding-top: 15px;
+    width: calc(100% - 32px);
+    height: 150px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.index-links p {
+    margin: 10px;
+    color: #0F3E39;
+    text-align: center;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.index-links div h2 {
+    font-weight: 500;
+    font-size: 24px;
+    color:rgb(73, 238, 8);
+}
+i {
+    margin: 15px 0 10px 0;
+    color: #0F3E39;
+}
+}
+
+@media only screen and (min-width: 1000px) {
+    .wrapper {
+        width: 1000px;
+        margin: 0 auto;
+        background:  rgb(253, 208, 9);
+    }
+    .hero {
+        color: #fff;
+        width: 100%;
+        height: 500px;
+    }
+    .hero h2 {
+        display: block;
+        width: 560px;
+        margin: 0 auto;
+    }
+    .index-links div {
+        margin: 20px 16px 0;
+        height: 310px;
+        background-color: #f2f2f2;
+        float: left;
+    }
+    .index-links {
+        overflow: hidden;
+    }
+    .index-boxlink {
+        width: calc(32% - 20px) !important;
+    }
+}
+
+/*
+    ========================================
+    Footer
+    ========================================
+  */
+
+footer {
+    width: calc(100% - 80px);
+    padding: 40px 40px;
+    margin-top: 50px;
+    background-color: #111;
+    overflow: hidden;
+}
+
+footer ul {
+    width: fit-content;
+    float: left;
+    padding-left: 20px;
+}
+
+footer ul li {
+    display: block;
+    list-style: none;
+}
+
+footer ul li a {
+    font-size: 16px;
+    color: #fff;
+    line-height: 30px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .footer {
+        color: #648880;
+        font-size: 14px;
+        padding-bottom: 44px;
+        padding-top: 44px;
+        
+      }
+      .footer small {
+        float: left;
+        font-weight: 400;
+      }
+      footer ul {
+        width: fit-content;
+        float: right;
+        
+    }
+    footer ul li {
+        display: inline-block;
+        margin: 10px;
+      
+
+    }
+
+      /* footer {
+        width: calc(100% - 20px);
+        padding: 40px 40px;
+        margin-top: 20px;
+        background-color: #111;
+        overflow: hidden;
+    }
+    
+   
+    
+   
+    
+    footer ul li a {
+        font-size: 16px;
+        color: #fff;
+        line-height: 30px;
+    }
+    
+ */
+
+}
