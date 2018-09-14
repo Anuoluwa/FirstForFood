@@ -1,4 +1,4 @@
-# FirstForFood [![Build Status](https://travis-ci.org/Anuoluwa/FirstForFood.svg?branch=develop)](https://travis-ci.org/Anuoluwa/FirstForFood) [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/FirstForFood/badge.svg?branch=develop)](https://coveralls.io/github/Anuoluwa/FirstForFood?branch=develop)
+# FirstForFood [![Build Status](https://travis-ci.org/Anuoluwa/FirstForFood.svg?branch=develop)](https://travis-ci.org/Anuoluwa/FirstForFood) [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/FirstForFood/badge.svg?branch=develop)](https://coveralls.io/github/Anuoluwa/FirstForFood?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/7ee092b71c41592c1612/maintainability)](https://codeclimate.com/github/Anuoluwa/FirstForFood/maintainability)
 
 
 ## Project Overview
