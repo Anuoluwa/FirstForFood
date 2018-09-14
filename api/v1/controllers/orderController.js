@@ -60,8 +60,11 @@ export default class Orders {
       const orderId = parseInt(req.params.id, 10);
       const order = orders.filter(item => item.orderId == orderId)[0];
       const index = orders.indexOf(order);
+      if (!order) {
+        return res.status(404).json({ message: 'Order does not exist!' });
+      }
       orders.splice(index, 1);
-      res.status(200).json({ message: `The is ${orderId} has been removed.` });
+      res.status(200).json({ message: `The is order with this id: ${orderId} has been removed.` });
     } catch (err) {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }
