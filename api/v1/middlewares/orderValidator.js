@@ -17,13 +17,13 @@ class ValidateInput {
       return res.status(400).json({ message: '"foodItem" must be a string!' })
         .end();
     }
-    if (foodItem.length < 10) {
+    if (foodItem.length < 8) {
       return res.status(400).json(
         { message: '"foodItem" must be a string with minimum 20 characters' },
       )
         .end();
     }
-    if (foodItem.length > 21) {
+    if (foodItem.length > 30) {
       return res.status(400).json({ message: '"foodItem" must be a string with maximum 200 characters' })
         .end();
     }
@@ -31,7 +31,7 @@ class ValidateInput {
       return res.status(400).json('"quantity" must be a string')
         .end();
     }
-    if (quantity.length < 10) {
+    if (quantity.length < 1) {
       return res.status(400).json({ messge: '"quantity" must be a string with minimum 20 characters' })
         .end();
     }
@@ -55,7 +55,7 @@ class ValidateInput {
       return res.status(400).json({ message: '"address" must be a string' })
         .end();
     }
-    if (address.length < 10) {
+    if (address.length < 8) {
       return res.status(400).json({ message: '"address" must be a string with minimum 20 characters' })
         .end();
     }
