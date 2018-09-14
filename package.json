@@ -30,7 +30,7 @@
     "supertest": "^3.3.0"
   },
   "scripts": {
-    "start": "babel-node -- server.js",
+    "start": "babel-node server.js",
     "test": "nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
     "lint": " esw server.js Versioning.js api/v1/* --color",
     "lint-watch": "npm run lint -- --watch",
