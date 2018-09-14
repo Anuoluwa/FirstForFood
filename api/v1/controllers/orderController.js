@@ -6,7 +6,7 @@ export default class Orders {
     try {
       return await res.json(orders);
     } catch (err) {
-      res.status(404).json({ message: 'Order not found!', err });
+      return res.status(404).json({ message: 'Orders not found!', err });
     }
   }
 
@@ -15,11 +15,11 @@ export default class Orders {
     try {
       const orderItem = await orders.filter(order => order.orderId == orderId)[0];
       if (!orderItem) {
-        res.status(404).json({ message: 'Order does not exist!' });
+        return res.status(404).json({ message: 'Order does not exist!' });
       }
       return res.status(200).json(orderItem);
     } catch (err) {
-      res.status(500).json({ message: 'Sorry about that, not available', err });
+      return res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
 
@@ -41,36 +41,30 @@ export default class Orders {
       const orderId = parseInt(req.params.id, 10);
       const order = await orders.filter(item => item.orderId == orderId)[0];
       if (!order) {
-        orders.push({
-          orderId: orders.length + 1,
-          date: req.body.date,
-          foodItem: req.body.foodItem,
-          quantity: req.body.quantity,
-          price: req.body.price,
-          address: req.body.address,
-        });
-        res.status(201).json({ message: 'order was created successfully', data: orders });
-      } else {
-        const index = orders.indexOf(order);
-        const keys = Object.keys(req.body);
-        keys.forEach((key) => {
-          order[key] = req.body[key];
-        });
-        orders[index] = order;
-        res.status(202).json({ message: 'Order updated successfully!', data: orders[index] });
+        return res.status(404).json({ message: 'Order does not exist!' });
       }
+      const index = orders.indexOf(order);
+      const keys = Object.keys(req.body);
+      keys.forEach((key) => {
+        order[key] = req.body[key];
+      });
+      orders[index] = order;
+      res.status(202).json({ message: 'Order updated successfully!', data: orders[index] });
     } catch (err) {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
 
-  static async cancelOrder(req, res) {
+  static async removeOrder(req, res) {
     try {
       const orderId = parseInt(req.params.id, 10);
       const order = orders.filter(item => item.orderId == orderId)[0];
       const index = orders.indexOf(order);
+      if (!order) {
+        return res.status(404).json({ message: 'Order does not exist!' });
+      }
       orders.splice(index, 1);
-      res.status(200).json({ message: `The is ${orderId} has been removed.` });
+      res.status(200).json({ message: `The is order with this id: ${orderId} has been removed.` });
     } catch (err) {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }

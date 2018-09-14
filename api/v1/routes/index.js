@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get('/', (req, res) => res.json('Successful!, Welcome to SwiftFood API v1!'));
 router.get('/orders', Order.getAllOrders);
-router.get('/orders/:id', Order.getOneOrder);
+router.get('/orders/:id', Validator.validateId, Order.getOneOrder);
 router.post('/orders', Validator.orderInput, Order.addOrder);
-router.put('/orders/:id', Order.updateOrder);
-router.delete('/orders/:id', Order.cancelOrder);
+router.put('/orders/:id', Validator.validateId, Order.updateOrder);
+router.delete('/orders/:id', Validator.validateId, Order.removeOrder);
 
 export default router;
