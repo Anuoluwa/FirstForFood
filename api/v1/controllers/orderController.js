@@ -23,7 +23,7 @@ export default class Orders {
     }
   }
 
-  static addOrder(req, res) {
+  static removeOrder(req, res) {
     const newOrder = {
       orderId: orders.length + 1,
       date: req.body.date,
