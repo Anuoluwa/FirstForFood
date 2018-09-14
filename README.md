@@ -1,4 +1,4 @@
-# FirstForFood
+# FirstForFood [![Build Status](https://travis-ci.org/Anuoluwa/FirstForFood.svg?branch=develop)](https://travis-ci.org/Anuoluwa/FirstForFood)
 
 
 ## Project Overview
