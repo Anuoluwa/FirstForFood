@@ -57,7 +57,8 @@ table {
 }
 
 body {
-    color: #f2f2f2;
+    background: #C0DE88;
+    color: rgb(27, 41, 1);
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 a {
@@ -218,7 +219,6 @@ footer ul li a {
     }
 
 }
-
 /*
     ========================================
              Users Details view
@@ -254,66 +254,8 @@ footer ul li a {
     font-weight: 400;
 }
 
-@media only screen and (min-width: 1000px) {
-    .wrapper {
-        width: 1000px;
-        margin: 0 auto;
-    }
-    .details-card div {
-        margin: 20px 16px 20px;
-        height: 230px;
-        background-color: #f2f2f2;
-        float: left;
-    }
-    .details-card {
-        overflow: hidden;
-    }
-    .details-boxlink {
-        width: calc(32% - 20px) !important;
-       
-    }
-
-    .admin-details-card div {
-        margin: 20px 16px 20px;
-        height: 330px;
-        background-color: #f2f2f2;
-        float: left;
-    }
-}
-
-/*
-    ========================================
-             Users Details view
-    ========================================
-*/
-
-.details-card div {
-    margin: 16px 16px 16px;
-    padding-top: 15px;
-    width: calc(100% - 32px);
-    height: 250px;
-    background-color: #f2f2f2;
-    
-    
-}
-
-.details-card p  {
-    margin: 10px;
-    color: #180633;
-    font-weight: 500;
-    line-height: 16px;
-    font-size: 18px;
-    
-}
-
-.details-card div a {
-    font-weight: 500;
-    font-size: 24px;
-}
-.detail-title {
-    margin: 30px 0px 0px 50px;
-    font-size: 30px;
-    font-weight: 400;
+.main{
+    background: #C0DE88;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -343,26 +285,21 @@ footer ul li a {
     }
 }
 
-
 /*
     ========================================
-             Admin Details view
+      Details view
     ========================================
 */
 
 .info {
     color: blue;
 }
-
-
 .admin-details-card div {
     margin: 16px 16px 16px;
     padding-top: 15px;
     width: calc(100% - 32px);
-    height: 400px;
-    background-color: #f2f2f2;
-    
-    
+    height: 350px;
+    background-color: #bac9a8;
 }
 
 .admin-details-card p  {
@@ -384,7 +321,7 @@ footer ul li a {
 
 .admin-details-card h4  {
     margin: 10px;
-    color:  #00B4CC;
+    color:  #DE5E35;
     font-weight: 600;
     line-height: 16px;
     font-size: 20px;
@@ -392,16 +329,15 @@ footer ul li a {
 }
 .admin-details-card small  {
     font-weight: 400;
-    color: #00B4CC;
+    color: #DE5E35;
     line-height: 16px;
-    font-size: 20px;  
+    font-size: 18px;  
 }
 .admin-detail-title {
     margin: 30px 0px 0px 50px;
     font-size: 24px;
     font-weight: 380;
 }
-
 .search {
     width: 100%;
     position: relative
@@ -453,5 +389,5 @@ footer ul li a {
         left: 50%;
         transform: translate(-0%, -580%);
       }
-    
+    }
 }
