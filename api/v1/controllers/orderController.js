@@ -23,7 +23,7 @@ export default class Orders {
     }
   }
 
-  static removeOrder(req, res) {
+  static addOrder(req, res) {
     const newOrder = {
       orderId: orders.length + 1,
       date: req.body.date,
@@ -55,7 +55,7 @@ export default class Orders {
     }
   }
 
-  static async cancelOrder(req, res) {
+  static async removeOrder(req, res) {
     try {
       const orderId = parseInt(req.params.id, 10);
       const order = orders.filter(item => item.orderId == orderId)[0];
