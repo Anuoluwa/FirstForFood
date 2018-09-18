@@ -55,13 +55,14 @@ table {
 * {
     text-decoration: none;
 }
+@import url('href="https://fonts.googleapis.com/css?family=Roboto|Lato|Raleway"');
 
 body {
-    color: #f2f2f2;
-    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #0D2127;
+    font: 300 16px/22px  Roboto, Lato, Raleway, sans-serif,Arial, sans-serif;
 }
 a {
-    color: #5FB007;
+    color: #84FF00;
     text-decoration: none;
 }
 a:hover {
@@ -75,17 +76,17 @@ a:hover {
 */
 
 header {
-    background-color: #f2f2f2;
+    background-color: #010A26;
     width: 100%;
     height: 100px;
 }
 
 header .logo {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 900;
     letter-spacing: .5px;
     line-height: 44px;
-    padding: 20px 0;
+    padding: 10px 0;
     text-transform: uppercase;
     display: block;
     margin: 0 auto;
@@ -359,10 +360,10 @@ header .header-request {
     header .header-login {
          display: block;
          font-size: 16px;
-         color: #111;
+         color: #0F3E39;
          text-transform:  uppercase;
          line-height: 38px;
-         border: 2px solid #91B02C;
+         border: 2px solid rgb(220, 233, 150);
          float: right;
          border-radius: 50px;
          margin-right: 40px;
@@ -371,7 +372,7 @@ header .header-request {
          font-weight: 400;
      }
      .signup {
-        background: rgb(253, 208, 9);
+        background: #B5AA00;
      }
 
     header .header-request {
@@ -630,6 +631,17 @@ header .header-request {
     line-height: 44px;
     display: table;
 }
+#overlay{
+  position: relative; /* Sit on top of the page content */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-color: rgba(2, 23, 62, 0.7); /* Black background with opacity */
+  /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
 .vertical-banner {
     padding: 40px 70px 0 0;
     display: table-cell;
@@ -642,7 +654,7 @@ header .header-request {
     font-size: 1.5em;
     border: 0;
     color:  rgb(253, 208, 9);
-    background: rgb(231, 67, 67);
+    background: #DE5E35;
     border-radius: 50px;
     padding: 12px 14px;
     cursor: pointer;
@@ -652,9 +664,9 @@ header .header-request {
     vertical-align: middle;
 }
 .hero h2 {
-    color: rgb(73, 238, 8);
-    font-size: 30px;
-    font-weight: 700;
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 600;
     line-height: 43px;
     text-align: center;
 }
@@ -679,7 +691,13 @@ header .header-request {
     background-color: #f2f2f2;
     text-align: center;
 }
-
+.process{
+  margin: 35px 0 20px 0;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #02173E;
+}
 .index-links p {
     margin: 10px;
     color: #0F3E39;
@@ -691,19 +709,19 @@ header .header-request {
 .index-links div h2 {
     font-weight: 500;
     font-size: 24px;
-    color:rgb(73, 238, 8);
+    color: #02173E;
 }
 .index-links  i {
     margin: 15px 0 10px 0;
-    color: #0F3E39;
+    color:rgb(73, 238, 8);
 }
 }
+
 
 @media only screen and (min-width: 1000px) {
     .wrapper {
         width: 1000px;
         margin: 0 auto;
-        background:  rgb(253, 208, 9);
     }
     .hero {
         color: #fff;
@@ -722,8 +740,8 @@ header .header-request {
         margin: 25px auto;
         font-size: 1.5em;
         border: 0;
-        color:  rgb(253, 208, 9);
-        background: rgb(231, 67, 67);
+        color: rgb(24, 24, 2);
+        background: #16ECFF;
         border-radius: 50px;
         padding: 12px 14px;
         cursor: pointer;
@@ -748,6 +766,74 @@ header .header-request {
 }
 
 /*
+  ========================================
+  Menu
+  ========================================
+*/
+.food-item {
+  margin: 70px 0 0 0;
+}
+.menu-card-list div {
+  margin: 16px 16px 0;
+  padding-top: 15px;
+  width: calc(100% - 32px);
+  height: 150px;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.menu-card-list  i {
+  margin: 15px 0 10px 0;
+  color:rgb(73, 238, 8);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+
+}
+.menu-card-list .card-details {
+  margin: 5px 10px;
+  color: #6ACC00;
+  font-weight: 500;
+  font-size: 16px;
+}
+.menu-card-list .card-details #price {
+  color: rgb(51, 34, 10);
+  font-weight: 900;
+  font-size: 18px;
+}
+.menu-card-list .card-details button {
+  font-size: 0.9em;
+  margin: 10px 0;
+  border: 0;
+  background: #F5900E;
+  color: whitesmoke;
+  border-radius: 50px;
+  padding: 5px 8px ;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1000px) {
+  .wrapper-menu {
+      width: 1000px;
+      margin: 0 auto;
+  }
+  .menu-card-list div {
+      margin: 20px 5px 0;
+      height: 310px;
+      background-color: #f2f2f2;
+      float: left;
+  }
+  .menu-card-list {
+      overflow: hidden;
+  }
+  .card {
+      width: calc(20% - 10px) !important;
+  }
+}
+
+
+/*
     ========================================
     Footer
     ========================================
@@ -757,7 +843,7 @@ footer {
     width: calc(100% - 80px);
     padding: 40px 40px;
     margin-top: 50px;
-    background-color: #111;
+    background-color: #010A26;
     overflow: hidden;
 }
 
