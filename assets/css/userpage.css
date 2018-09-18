@@ -161,6 +161,7 @@ header .header-request {
         margin-top: 30px;
         padding: 0 20px;
     }
+}
 /*
     ========================================
     Footer
@@ -249,10 +250,6 @@ footer ul li a {
     font-weight: 500;
     font-size: 16px;
   }
-  .menu-card-list .card-details h2 {
-    font-weight: 500;
-    font-size: 18px;
-  }
   .menu-card-list .card-details #price {
     color: rgb(51, 34, 10);
     font-weight: 900;
@@ -301,5 +298,4 @@ footer ul li a {
     .card {
         width: calc(20% - 10px) !important;
     }
-}
 }
