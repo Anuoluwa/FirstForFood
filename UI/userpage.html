@@ -22,117 +22,127 @@
         <nav class="nav primary-nav">
             <ul>
                 <li>
-                    <a href=""><i class="fas fa-bell fa-2x"></i></i></a>
+                    <a href="#">Welcome, John Doe</a>
                 </li>
                 <li>
                     <a href=""><i class="far fa-user-circle fa-2x"></i></a>
                 </li>
                 <li>
-                    <a href=>Order</a>
-                </li>
-                <li>
-                    <a href=>Menu</a>
+                    <a href=""><i class="fas fa-bell fa-2x"></i></i></a>
                 </li>
             </ul>
-            <button class="header-login">LOG OUT</button>
+            <button id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
+                style="width:auto;">Create Order</button>
+            <button class="header-login" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">LOG
+                OUT</button>
         </nav>
     </header>
 
     <div class="">
-        <h3 class="admin-detail-title">Order History</h4>
+        <h3 class="user-detail-title">Order History</h4>
             <hr>
     </div>
-
-    <div class="wrapper main">
-        <section class="admin-details-card">
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909e677</h6>
-                <h6>Date: 23-11-17</h6>
-                <p>Food: <small>Wine - Vineland Estate Semi - Dry</small></p>
-                <p>Quantity: <small>10 Crates</small></p>
-                <p>Price: <small>#23,2345</small></p>
-                <p>Status: <small class="success">Completed</small></p>
-            </div>
-
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 09099045</h6>
-                <h6>Date: 23-11-17</h6>
-                <p>Food: <small>Creme De Cacao White</small></p>
-                <p>Quantity: <small>2 Buckets</small></p>
-                <p>Price: <small>#67,000</small></p>
-                <p>Status: <small class="success">Completed</small></p>
-            </div>
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 090938789</h6>
-                <h6>Date: 23-11-17</h6>
-                <p>Food: <small>Sun - Dried Tomatoes</small></p>
-                <p>Quantity: <small>Maintenance</small></p>
-                <p>Price: <small>Desk 45</small></p>
-                <p>Status: <small class="success">Completed</small></p>
-            </div>
-
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909345</h6>
-                <h6>Date: 23-4-17</h6>
-                <p>Food: <small>Asparagus - Mexican</small></p>
-                <p>Quantity: <small>Maintenance</small></p>
-                <p>Price: <small>Desk 5</small></p>
-                <p>Status: <small class="success">Completed</small></p>
-            </div>
-
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909345</h6>
-                <h6>Date: 23-4-17</h6>
-                <p>Food: <small>Appetizer - Veg Assortment</small></p>
-                <p>Quantity: <small>Maintenance</small></p>
-                <p>Price: <small>Desk 5</small></p>
-                <p>Status: <small class="success">Pending</small></p>
-            </div>
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909345</h6>
-                <h6>Date: 23-11-17</h6>
-                <p>Food: <small>Curry Powder Madras</small></p>
-                <p>Quantity: <small>Repairs</small></p>
-                <p>Price: <small>D123</small></p>
-                <p>Status: <small>Disapproved</small></p>
-            </div>
-
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909345</h6>
-                <h6>Date: 23-4-17</h6>
-                <p>Food: <small>Wine - Chenin Blanc K.w.v.</small></p>
-                <p>Quantity: <small>Maintenance</small></p>
-                <p>Price: <small>#5,230</small></p>
-                <p>Status: <small class="success">Completed</small></p>
-            </div>
-
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909345</h6>
-                <h6>Date: 23-4-17</h6>
-                <p>Food: <small>Wine - Chenin Blanc K.w.v.</small></p>
-                <p>Quantity: <small>3 Bottles</small></p>
-                <p>Price: <small>#12,000</small></p>
-                <p>Status: <small class="success">Completed</small></p>
-            </div>
-            <div class="details-boxlink">
-                <hr>
-                <h6>Order ID: 0909345</h6>
-                <h6>Date: 23-11-17</h6>
-                <p>Food: <small>Jollof Rice & Chicken</small></p>
-                <p>Quantity: <small>3 Packs</small></p>
-                <p>Price: <small>23,456</small></p>
-                <p>Status: <small>Completed</small></p>
-            </div>
-        </section>
-    </div>
+    <section class="food-item" id="menu">
+        <div class="wrapper-menu">
+            <section class="menu-card-list">
+                <div class="card">
+                    <img src="./assets/images/friedchicken.png">
+                    <div class="card-details">
+                        <h3>Chicken Barbecue</h3>
+                        <h3 id="price">#2,800</h3>
+                        <h3 id="price">2 Packs</h3>
+                        <p class="status">Completed</p>
+                        
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/salad.png">
+                    <div class="card-details">
+                        <h3>Salad & Assorted Beef</h3>
+                        <h3 id="price">#4,300</h3>
+                        <h3 id="price">4 Packs</h3>
+                        <p class="status">Completed</p>
+                      
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/assorted.png">
+                    <div class="card-details">
+                        <h3>Spicy Chicken Burger</h3>
+                        <h3 id="price">#2,500</h3>
+                        <h3 id="price">2 Packs</h3>
+                        <p class="status">Completed</p>
+                       
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/chips.jpeg">
+                    <div class="card-details">
+                        <h3>Assorted Chips & Beef</h3>
+                        <h3 id="price">#2,000</h3>
+                        <h3 id="price">1 Packs</h3>
+                        <p class="status">Declined</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/spicy-chicken-burger.png">
+                    <div class="card-details">
+                        <h3>Spicy Chicken Burger</h3>
+                        <h3 id="price">#2,300</h3>
+                        <h3 id="price">2 Packs</h3>
+                        <p class="status">Completed</p>
+                    </div>
+                </div>
+            </section>
+            <section class="menu-card-list">
+                <div class="card">
+                    <img src="./assets/images/grilled_fish.png">
+                    <div class="card-details">
+                        <h3>Grilled Fish
+                            <h3 id="price">#6,300</h3>
+                            <h3 id="price">4 Packs</h3>
+                            <p class="status">Pending</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/Ribs-on-Grill-with-Basting-Brush-.png">
+                    <div class="card-details">
+                        <h3>Ribs-on-Grills</h3>
+                        <h3 id="price">#5,500</h3>
+                        <h3 id="price">3 Packs</h3>
+                        <p class="status">Declined</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/jollofrice.jpg">
+                    <div class="card-details">
+                        <h3>Jollof Rice & Chicken</h3>
+                        <h3 id="price">#2,300</h3>
+                        <h3 id="price">3 Packs</h3>
+                        <p class="status">Completed</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/whitericesauce.png">
+                    <div class="card-details">
+                        <h3>White Rice & Sauce</h3>
+                        <h3 id="price">#3,300</h3>
+                        <h3 id="price">6 Packs</h3>
+                        <p class="status">Pending</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/informatin-nigeria-amala.jpeg">
+                    <div class="card-details">
+                        <h3>Amala & Gbegiri</h3>
+                        <h3 id="price">#2,000</h3>
+                        <h3 id="price">6 Packs</h3>
+                        <p class="status">Pending</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
     <!-- Footer -->
     <div>
         <footer>
