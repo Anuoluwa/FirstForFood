@@ -228,7 +228,13 @@ footer ul li a {
     margin: 15px;
     font-weight: 300;
     color: rgb(185, 31, 26);    
-    font: roboto;
+}
+.title {
+  font-size: 30px;
+  margin: 35px 0 90px 0;
+  font-weight: 300;
+  text-align: center;
+  color: rgb(0, 117, 212);    
 }
 #form-outer {
   background-color: #f2f2f2;

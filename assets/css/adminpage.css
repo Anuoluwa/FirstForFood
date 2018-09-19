@@ -114,6 +114,35 @@ header nav ul li a {
 header .header-request {
     display: none;
 }
+header .header-login {
+    display: block;
+    font-size: 14px;
+    color: #0F3E39;
+    text-transform:  uppercase;
+    line-height: 22px;
+    border: 2px solid rgb(19, 207, 192);
+    float: right;
+    border-radius: 50px;
+    margin-right: 40px;
+    padding: 4px 20px;
+    font-weight: 400;
+}
+@media only screen and (min-width: 375px) {
+    header .header-login {
+        display: block;
+        font-size: 14px;
+        color: #a70909;
+        text-transform:  uppercase;
+        line-height: 22px;
+        border: 2px solid rgb(2, 46, 42);
+        float: right;
+        border-radius: 50px;
+        margin-top: 17px;;
+        padding: 4px 20px;
+        font-weight: 400;   
+    }
+
+}
 @media only screen and (min-width: 1000px) {
     header .logo {
         padding: 0px 20px 0px 40px;
@@ -321,10 +350,10 @@ footer ul li a {
   }
   .user-detail-title {
     color: #010A26;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 700;
     text-align: center;
-    margin: 30px 20px;
+    margin: 15px 20px;
 }  
 @media only screen and (min-width: 1000px) {
     .wrapper {
