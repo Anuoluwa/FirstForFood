@@ -1,7 +1,6 @@
 import orders from '../models/orders';
 
-
-export default class Orders {
+class Orders {
   static async getAllOrders(req, res) {
     try {
       return await res.json(orders);
@@ -70,3 +69,5 @@ export default class Orders {
     }
   }
 }
+
+export default Orders;
