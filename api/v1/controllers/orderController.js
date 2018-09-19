@@ -55,7 +55,7 @@ export default class Orders {
     }
   }
 
-  static async removeOrder(req, res) {
+  static async deleteOrder(req, res) {
     try {
       const orderId = parseInt(req.params.id, 10);
       const order = orders.filter(item => item.orderId == orderId)[0];
