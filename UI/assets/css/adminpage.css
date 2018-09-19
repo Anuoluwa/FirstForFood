@@ -305,7 +305,7 @@ footer ul li a {
     font-weight: 380;
 }
 .details-boxlink {
-    width: calc(100% - 20px) !important;
+    width: calc(100% - 32px) !important;
     overflow: hidden;
    
 }
