@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Fast food ordering app",
   "main": "Versioning.js",
-    "scripts": {
-    "start": "babel-node server.js",
-    "test": "nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
-    "lint": " esw server.js Versioning.js api/v1/* --color",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development babel-node server.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register \" api/*/tests/**/*.spec.js\" --reporter progress --exit ",
+    "lint": " esw server.js Versioning.js api/* --color",
     "lint-watch": "npm run lint -- --watch",
     "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -27,6 +27,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
