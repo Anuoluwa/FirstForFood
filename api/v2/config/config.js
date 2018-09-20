@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const config = {
-  database: {
+  development: {
     database: process.env.DATABASE_URL,
   },
   test: {
