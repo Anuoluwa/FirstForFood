@@ -9,6 +9,6 @@ router.get('/orders', Order.getAllOrders);
 router.get('/orders/:id', Validator.validateId, Order.getOneOrder);
 router.post('/orders', Validator.orderInput, Order.addOrder);
 router.put('/orders/:id', Validator.validateId, Order.updateOrder);
-router.delete('/orders/:id', Validator.validateId, Order.removeOrder);
+router.delete('/orders/:id', Validator.validateId, Order.deleteOrder);
 
 export default router;
