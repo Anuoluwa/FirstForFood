@@ -21,138 +21,247 @@
         <nav class="nav primary-nav">
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href=>Order</a>
+                    <a href="#howitworks">How It Works</a>
                 </li>
                 <li>
-                    <a href=>Menu</a>
+                    <a href="#menu">Menu</a>
                 </li>
             </ul>
-            <button id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'" style="width:auto;">LOG IN</button>
-            <button class="header-login" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">SIGN UP</button>
+            <button id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
+                style="width:auto;">LOG IN</button>
+            <button class="header-login" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">SIGN
+                UP</button>
         </nav>
     </header>
     <!-- modal -->
     <section>
-            <div id="signinform" class="modal">
-                <form class="modal-content animate" action="profile.html">
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('signinform').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <div id="signinform" class="modal">
+            <form class="modal-content animate" action="profile.html">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('signinform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+
+                <div class="modal-container">
+                    <div class="modalTab">
+                        <label id="email-label" for="email">
+                            <strong>*Email:</strong>
                     </div>
-    
-                    <div class="modal-container">
-                        <div class="modalTab">
-                            <label id="email-label" for="email">
-                                <strong>*Email:</strong>
-                        </div>
-                        <div class="rightmodalTab">
-                            <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
-                        </div>
-    
-    
-                        <div class="modalTab">
-                            <label id="password-label" for="password">
-                                <strong>*Password:</strong>
-                        </div>
-                        <div class="rightmodalTab">
-                            <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password" required>
-                        </div>
-    
-    
-                        <button id="button" class="submit" type="submit">Sign In</button>
+                    <div class="rightmodalTab">
+                        <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
                     </div>
-    
-                    <div class="modal-container signup-div" style="background-color:#f1f1f1">
-                        <span class="psw">Don't have an account yet?
-                            <a href="#">Sign Up!</a>
-                        </span>
+
+
+                    <div class="modalTab">
+                        <label id="password-label" for="password">
+                            <strong>*Password:</strong>
                     </div>
-                </form>
-            </div>
-            <!-- signup-->
-            <div id="signupform" class="modal">
-                <form class="modal-content animate" action="signup.html">
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('signupform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <div class="rightmodalTab">
+                        <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password"
+                            required>
                     </div>
-    
-                    <div class="modal-container">
-                        <div class="modalTab">
-                            <label id="username-label" for="username">
-                                <strong>*Username:</strong>
-                        </div>
-                        <div class="rightmodalTab">
-                            <input id="input" autofocus type="text" name="username" id="username" minlength="6" maxlength="10" placeholder="Enter your username">
-                        </div>
-                        <div class="modalTab">
-                            <label id="email-label" for="email">
-                                <strong>*Email:</strong>
-                        </div>
-                        <div class="rightmodalTab">
-                            <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
-                        </div>
-    
-    
-                        <div class="modalTab">
-                            <label id="password-label" for="password">
-                                <strong>*Password:</strong>
-                        </div>
-                        <div class="rightmodalTab">
-                            <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password" required>
-                        </div>
-    
-    
-                        <button id="button" class="submit" type="submit">Sign In</button>
+
+
+                    <button id="button" class="submit" type="submit">Sign In</button>
+                </div>
+
+                <div class="modal-container signup-div" style="background-color:#f1f1f1">
+                    <span class="psw">Don't have an account yet?
+                        <a href="#">Sign Up!</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <!-- signup-->
+        <div id="signupform" class="modal">
+            <form class="modal-content animate" action="signup.html">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('signupform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+
+                <div class="modal-container">
+                    <div class="modalTab">
+                        <label id="username-label" for="username">
+                            <strong>*Username:</strong>
                     </div>
-    
-                    <div class="modal-container signup-div" style="background-color:#f1f1f1">
-                        <span class="psw">Don't have an account yet?
-                            <a href="#">Sign Up!</a>
-                        </span>
+                    <div class="rightmodalTab">
+                        <input id="input" autofocus type="text" name="username" id="username" minlength="6" maxlength="10"
+                            placeholder="Enter your username">
                     </div>
-                </form>
-            </div>
-    
-        </section>
+                    <div class="modalTab">
+                        <label id="email-label" for="email">
+                            <strong>*Email:</strong>
+                    </div>
+                    <div class="rightmodalTab">
+                        <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
+                    </div>
+
+
+                    <div class="modalTab">
+                        <label id="password-label" for="password">
+                            <strong>*Password:</strong>
+                    </div>
+                    <div class="rightmodalTab">
+                        <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password"
+                            required>
+                    </div>
+
+
+                    <button id="button" class="submit" type="submit">Sign In</button>
+                </div>
+
+                <div class="modal-container signup-div" style="background-color:#f1f1f1">
+                    <span class="psw">Don't have an account yet?
+                        <a href="#">Sign Up!</a>
+                    </span>
+                </div>
+            </form>
+        </div>
+
+    </section>
     <!-- Hero -->
     <section class="hero">
-        <div class="vertical-banner">
-            <h2>Your favorite foods with a push of a button</h2>
-            <h2>Make your day special with delicious treats
-                </P>
-                <h2>Enjoy our tasty treats by placing the order now.</h2>
-                <button class="banner-btn" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order
-                    Now!</button>
+        <div id="overlay">
+            <div class="vertical-banner">
+                <h2>Your favorite foods with a push of a button</h2>
+                <h2>Make your day special with delicious treats
+                    </P>
+                    <h2>Enjoy our tasty treats by placing the order now.</h2>
+                    <a href="./createorder.html">
+                        <button class="banner-btn" onclick="document.getElementById('signupform').style.display='block'"
+                            style="width:auto;">Order
+                            Now!</button>
+                    </a>
+
+            </div>
         </div>
     </section>
 
     <div class="wrapper">
-        <section class="index-links">
+        <section class="index-links" id="howitworks">
+            <h2 class="process">How It Works</h2>
+            <hr>
             <div class="index-boxlink">
                 <i class="fas fa-concierge-bell fa-3x"></i>
                 <h2>Easy</h2>
-                <p>With our online ordering convenience, your favorite food choices stay within your reach always. Whenever
-                    you feel the need to satisfy your taste buds, you can come straight to our portal and place your order.
+                <p>With our online ordering convenience, your favorite food choices stay within your reach always.
+                    Whenever
+                    you feel the need to satisfy your taste buds, you can come straight to our portal and place your
+                    order.
                     It takes a few simple steps of the order and we quickly respond to your requests.</p>
             </div>
             <div class="index-boxlink">
                 <i class="far fa-clock fa-3x"></i>
                 <h2>Anywhere, Anytime</h2>
-                <p>Our quality of food makes us popular among our customers. We ensure that the food reaches you in no time.
-                    This way, you get to enjoy the warmth and freshness of the fast food dishes. Plus, there are amazing
+                <p>Our quality of food makes us popular among our customers. We ensure that the food reaches you in no
+                    time.
+                    This way, you get to enjoy the warmth and freshness of the fast food dishes. Plus, there are
+                    amazing
                     offers on various fast food choices that enhance the pleasure</p>
             </div>
             <div class="index-boxlink">
                 <i class="fas fa-truck fa-3x"></i>
                 <h2>Monitor Your Orders</h2>
-                <p>The factors such as the quality of food, the convenience of ordering and the services related to the delivery
-                    become important. So, you need a restaurant that offers all the qualities and is available for you anytime
+                <p>The factors such as the quality of food, the convenience of ordering and the services related to the
+                    delivery
+                    become important. So, you need a restaurant that offers all the qualities and is available for you
+                    anytime
                     you desire.</p>
             </div>
         </section>
     </div>
+    <section class="food-item" id="menu">
+        <h1 class="process"> <i class="fas fa-utensils"></i> Menu List </h1>
+        <div class="wrapper-menu">
+            <hr>
+            <section class="menu-card-list">
+                <div class="card">
+                    <img src="./assets/images/friedchicken.png">
+                    <div class="card-details">
+                        <h3>Chicken Barbecue</h3>
+                        <h3 id="price">#2,800</h3>
+                        <button id="cart" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/salad.png">
+                    <div class="card-details">
+                        <h3>Salad & Assorted Beef</h3>
+                        <h3 id="price">#4,300</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/assorted.png">
+                    <div class="card-details">
+                        <h3>Spicy Chicken Burger</h3>
+                        <h3 id="price">#2,500</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/chips.jpeg">
+                    <div class="card-details">
+                        <h3>Assorted Chips & Beef</h3>
+                        <h3 id="price">#2,000</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/spicy-chicken-burger.png">
+                    <div class="card-details">
+                        <h3>Spicy Chicken Burger</h3>
+                        <h3 id="price">#2,300</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+            </section>
+            <section class="menu-card-list">
+                <div class="card">
+                    <img src="./assets/images/grilled_fish.png">
+                    <div class="card-details">
+                        <h3>Grilled Fish
+                            <h3 id="price">#6,300</h3>
+                            <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/Ribs-on-Grill-with-Basting-Brush-.png">
+                    <div class="card-details">
+                        <h3>Ribs-on-Grills</h3>
+                        <h3 id="price">#5,500</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/jollofrice.jpg">
+                    <div class="card-details">
+                        <h3>Jollof Rice & Chicken</h3>
+                        <h3 id="price">#2,300</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/whitericesauce.png">
+                    <div class="card-details">
+                        <h3>White Rice & Sauce</h3>
+                        <h3 id="price">#3,300</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./assets/images/informatin-nigeria-amala.jpeg">
+                    <div class="card-details">
+                        <h3>Amala & Gbegiri</h3>
+                        <h3 id="price">#2,000</h3>
+                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
     <!-- Footer -->
     <div>
         <footer>

@@ -57,7 +57,7 @@ table {
 }
 
 body {
-    background: whitesmoke;
+    background: #D9D9D9;
     color: rgb(27, 41, 1);
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -78,7 +78,7 @@ a:hover {
 header {
     background-color: #010A26;
     width: 100%;
-    height: 140px;
+    height: 100px;
 }
 
 header .logo {
@@ -114,29 +114,7 @@ header nav ul li a {
 header .header-request {
     display: none;
 }
-
-header .header-login {
-    display: block;
-    font-size: 12px;
-    color: #0F3E39;
-    text-transform:  uppercase;
-    border: 2px solid rgb(220, 233, 150);
-    float: right;
-    border-radius: 20px;
-    padding: 5px 10px;
-    font-weight: 600;
-    margin: 5px 16px 0 0;
- }
- .signup {
-   background: #B5AA00;
- }
 @media only screen and (min-width: 1000px) {
-
-header {
-    background-color: #010A26;
-    width: 100%;
-    height: 100px;
-}
     header .logo {
         padding: 0px 20px 0px 40px;
         margin: 31px 0;
@@ -241,109 +219,127 @@ footer ul li a {
 }
 /*
   ========================================
-  Menu
+  form
   ========================================
 */
-  .menu-card-list div {
-    margin: 16px 16px 0;
-    padding: 15px 0 0 0;
-    width: calc(100% - 32px);
-    height: 270px;
-    background-color: #D9D9D9;
-    text-align: center;
-    border-radius: 5px;
+
+#title {
+    font-size: 20px;
+    margin: 15px;
+    font-weight: 300;
+    color: rgb(185, 31, 26);    
+}
+.title {
+  font-size: 30px;
+  margin: 35px 0 90px 0;
+  font-weight: 300;
+  text-align: center;
+  color: rgb(0, 117, 212);    
+}
+#form-outer {
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  border-radius: 15px;
+  width: 50%;
+  max-width: 900px;
+  padding: 10px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.labels {
+  display: inline-block;
+  text-align: right;
+  width: 40%;
+  padding: 5px;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+.rightTab {
+  display: inline-block;
+  text-align: left;
+  width: 48%;
+  vertical-align: middle;
+}
+
+.rightTab .food-tab{
+    margin-top: 18px;
+    margin-left: 40px;
+    color: rgb(10, 56, 56)
   }
   
-  .menu-card-list  i {
-    margin: 15px 0 10px 0;
-    color:rgb(73, 238, 8);
-  }
-  .card img {
+
+.input-field {
+  height: 20px;
+  width: 280px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+}
+
+#userAge {
+  width: 40px;
+}
+
+.userRatings,
+input[type="checkbox"] {
+  float: left;
+  margin-right: 5px;
+}
+
+#submit {
+  background-color: #59ace0;
+  border-radius: 4px;
+  color: white;
+  font-size: 1em;
+  height: 40px;
+  width: 96px;
+  margin: 10px;
+  border: 0px solid;
+}
+
+.dropdown {
+  height: 35px;
+  width: 140px;
+  padding: 5px;
+  margin: 10px;  
+  margin-top: 15px;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+}
+
+.radio, .checkbox {
+  position: relative;
+  left: -43px;
+  margin-left: 10px;
+  display: block;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 833px) {
+  .input-field {
     width: 80%;
-    height: 100px;
-  
   }
-  .menu-card-list .card-details {
-    margin: 5px 10px;
-    color: #427F00;
-    font-weight: 500;
-    font-size: 14px;
+  select {
+    width: 90%;
   }
-  .menu-card-list .card-details #price {
-    color: rgb(51, 34, 10);
-    font-weight: 900;
-    font-size: 16px;
-  }
-  .user-detail-title {
-      color: #010A26;
-      font-size: 20px;
-      font-weight: 700;
-      text-align: center;
-      margin: 20px 10px;
-  }
-  .status{
-    width:100%;
-    height: 20px;
-    background-color: #0F3E39;
-    text-align: center;
-    color: #B5AA00;
 }
-.card {
-    overflow: hidden;
-}
-  @media only screen and (min-width: 1000px) {
-    .wrapper-menu {
-        width: 1000px;
-        margin: 0 auto;
-    }
-    .menu-card-list div {
-        margin: 20px 5px 0;
-        height: 290px;
-        background-color: #D9D9D9;
-        float: left;
-        text-align: left;
-    }
-    .menu-card-list {
-        overflow: hidden;
-    }
-    .card {
-        width: calc(20% - 10px) !important;
-    }
-    .menu-card-list  i {
-        margin: 15px 0 10px 0;
-        color:rgb(73, 238, 8);
-      }
-      .card img {
-        width: 100%;
-        height: 120px;
-      
-      }
 
-      .menu-card-list .card-details {
-        margin: 5px 10px;
-        color: #427F00;
-        font-weight: 500;
-        font-size: 16px;
-      }
-      .menu-card-list .card-details #price {
-        color: rgb(51, 34, 10);
-        font-weight: 900;
-        font-size: 18px;
-      }
-      .user-detail-title {
-        color: #010A26;
-        font-size: 30px;
-        font-weight: 700;
-        text-align: center;
-        margin: 30px 20px;
-    }
-    .status{
-      margin: 20px 5px;
-      width:100%;
-      height: 30px;
-      background-color: #0F3E39;
-      text-align: center;
-      color: #B5AA00;
+@media screen and (max-width: 520px) {
+  .labels {
+    width: 100%;
+    text-align: left;
   }
-
+  .rightTab {
+    width: 80%;
+    float: left;
+  }
+  .input-field {
+    width: 100%;
+  }
+  select {
+    width: 100%;
+  }
 }

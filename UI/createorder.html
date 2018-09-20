@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/createorder.css">
+    <title>Order Page</title>
+</head>
+<header>
+    <h1 class="logo">
+        <a href="index.html">SwiftFood</a>
+    </h1>
+    <nav class="nav primary-nav">
+        <ul>
+            <li>
+                <a href="#">Welcome, John Doe</a>
+            </li>
+            <li>
+                <a href=""><i class="far fa-user-circle fa-2x"></i></a>
+            </li>
+            <li>
+                <a href=""><i class="fas fa-bell fa-2x"></i></i></a>
+            </li>
+        </ul>
+        <button class="header-login" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">LOG
+            OUT</button>
+    </nav>
+</header>
+
+<body>
+    <div class="title">
+            
+    </div>
+    
+    <!-- form -->   
+<div id="form-outer">
+  <h1 id="title">
+    Select your food choice!
+  </h1>
+  <form id="survey-form" method="GET" action="">
+    <div class="rowTab">
+      <div class="labels">
+        <label id="name-label" for="name">*Phone: </label>
+      </div>
+      <div class="rightTab">
+        <input autofocus type="text" name="name" id="name" class="input-field" placeholder="Enter your name" required>
+      </div>
+    </div>
+    <div class="rowTab">
+      <div class="labels">
+        <label id="email-label" for="address">*Address: </label>
+      </div>
+      <div class="rightTab">
+        <input type="text" name="email" id="email" class="input-field" required placeholder="Enter your Address">
+      </div>
+    </div>
+    <div class="rowTab">
+      <div class="labels">
+        <label for="preferences">Please select your food: </label>
+      </div>
+      <div class="rightTab ">
+        <ul class="food-tab" id="preferences" style="list-style: none;">
+          <li class="checkbox"><label><input name="prefer" value="1" type="checkbox" class="userRatings">Amala & Gbegiri</label></li>
+          <li class="checkbox"><input name="prefer" value="2" type="checkbox" class="userRatings">White Rice & Sauce</li>
+          <li class="checkbox"><label><input name="prefer" value="3" type="checkbox" class="userRatings">Jollof Rice & Chicken</label></li>
+          <li class="checkbox"><label><input name="prefer" value="4" type="checkbox" class="userRatings">Chicken Barbecue</label></li>
+          <li class="checkbox"><label><input name="prefer" value="5" type="checkbox" class="userRatings">Salad & Assorted Beef</label></li>
+          <li class="checkbox"><label><input name="prefer" value="6" type="checkbox" class="userRatings">Spicy Chicken Burger</label></li>
+          <li class="checkbox"><label><input name="prefer" value="7" type="checkbox" class="userRatings">Assorted Chips & Beef</label></li>
+          <li class="checkbox"><label><input name="prefer" value="8" type="checkbox" class="userRatings">Spicy Chicken Burger</label></li>
+          <li class="checkbox"><label><input name="prefer" value="9" type="checkbox" class="userRatings">Assorted Chips & Beef</label></li>
+          <li class="checkbox"><label><input name="prefer" value="10" type="checkbox" class="userRatings">Spicy Beed Burger</label></li>
+          <li class="checkbox"><label><input name="prefer" value="10" type="checkbox" class="userRatings">Ofada Rice</label></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rowTab">
+      <div class="labels">
+        <label for="comments">Any Comments or Suggestions?</label>
+      </div>
+      <div class="rightTab">
+        <textarea id="comments" class="input-field" style="height:50px;resize:vertical;" name="comment" placeholder="Enter your comment here..."></textarea>
+      </div>
+    </div>
+    <button id="submit" type="submit">Order</button>
+  </form>
+</div>
+    <div>
+        <footer>
+            <small>&copy; 2018 SwiftFood</small>
+            <nav>
+                <ul class="footer-main">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+</body>
+
+</html>

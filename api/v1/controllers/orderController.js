@@ -1,7 +1,6 @@
 import orders from '../models/orders';
 
-
-export default class Orders {
+class Orders {
   static async getAllOrders(req, res) {
     try {
       return await res.json(orders);
@@ -55,7 +54,7 @@ export default class Orders {
     }
   }
 
-  static async removeOrder(req, res) {
+  static async deleteOrder(req, res) {
     try {
       const orderId = parseInt(req.params.id, 10);
       const order = orders.filter(item => item.orderId == orderId)[0];
@@ -70,3 +69,5 @@ export default class Orders {
     }
   }
 }
+
+export default Orders;

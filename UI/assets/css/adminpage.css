@@ -57,7 +57,7 @@ table {
 }
 
 body {
-    background: #C0DE88;
+    background: rgba(217,217,217,0.9);
     color: rgb(27, 41, 1);
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -76,17 +76,17 @@ a:hover {
 */
 
 header {
-    background-color: #f2f2f2;
+    background-color: #010A26;
     width: 100%;
     height: 100px;
 }
 
 header .logo {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 900;
     letter-spacing: .5px;
     line-height: 44px;
-    padding: 20px 0;
+    padding: 10px 0;
     text-transform: uppercase;
     display: block;
     margin: 0 auto;
@@ -114,7 +114,35 @@ header nav ul li a {
 header .header-request {
     display: none;
 }
+header .header-login {
+    display: block;
+    font-size: 14px;
+    color: #0F3E39;
+    text-transform:  uppercase;
+    line-height: 22px;
+    border: 2px solid rgb(19, 207, 192);
+    float: right;
+    border-radius: 50px;
+    margin-right: 40px;
+    padding: 4px 20px;
+    font-weight: 400;
+}
+@media only screen and (min-width: 375px) {
+    header .header-login {
+        display: block;
+        font-size: 14px;
+        color: #a70909;
+        text-transform:  uppercase;
+        line-height: 22px;
+        border: 2px solid rgb(2, 46, 42);
+        float: right;
+        border-radius: 50px;
+        margin-top: 17px;;
+        padding: 4px 20px;
+        font-weight: 400;   
+    }
 
+}
 @media only screen and (min-width: 1000px) {
     header .logo {
         padding: 0px 20px 0px 40px;
@@ -134,11 +162,11 @@ header .header-request {
     }
     header .header-login {
          display: block;
-         font-size: 16px;
-         color: #111;
+         font-size: 14px;
+         color: #0F3E39;
          text-transform:  uppercase;
          line-height: 38px;
-         border: 2px solid #91B02C;
+         border: 2px solid rgb(220, 233, 150);
          float: right;
          border-radius: 50px;
          margin-right: 40px;
@@ -147,7 +175,7 @@ header .header-request {
          font-weight: 400;
      }
      .signup {
-        background: rgb(253, 208, 9);
+        background: #B5AA00;
      }
 
     header .header-request {
@@ -173,7 +201,7 @@ header .header-request {
     width: calc(100% - 80px);
     padding: 40px 40px;
     margin-top: 50px;
-    background-color: #111;
+    background-color: #010A26;
     overflow: hidden;
 }
 
@@ -219,71 +247,6 @@ footer ul li a {
     }
 
 }
-/*
-    ========================================
-             Users Details view
-    ========================================
-*/
-
-.details-card div {
-    margin: 16px 16px 16px;
-    padding-top: 15px;
-    width: calc(100% - 32px);
-    height: 250px;
-    background-color: #f2f2f2;
-    
-    
-}
-
-.details-card p  {
-    margin: 10px;
-    color: #180633;
-    font-weight: 500;
-    line-height: 16px;
-    font-size: 18px;
-    
-}
-
-.details-card div a {
-    font-weight: 500;
-    font-size: 24px;
-}
-.detail-title {
-    margin: 30px 0px 0px 50px;
-    font-size: 30px;
-    font-weight: 400;
-}
-
-.main{
-    background: #C0DE88;
-}
-
-@media only screen and (min-width: 1000px) {
-    .wrapper {
-        width: 1000px;
-        margin: 0 auto;
-    }
-    .details-card div {
-        margin: 20px 16px 20px;
-        height: 230px;
-        background-color: #f2f2f2;
-        float: left;
-    }
-    .details-card {
-        overflow: hidden;
-    }
-    .details-boxlink {
-        width: calc(32% - 20px) !important;
-       
-    }
-
-    .admin-details-card div {
-        margin: 20px 16px 20px;
-        height: 330px;
-        background-color: #f2f2f2;
-        float: left;
-    }
-}
 
 /*
     ========================================
@@ -294,16 +257,19 @@ footer ul li a {
 .info {
     color: blue;
 }
+
 .admin-details-card div {
     margin: 16px 16px 16px;
     padding-top: 15px;
-    width: calc(100% - 32px);
-    height: 350px;
-    background-color: #bac9a8;
+    width: calc(100% - 10px);
+    height: 200px;
+    background-color: whitesmoke;
+    border-radius: 10px;
 }
 
+
 .admin-details-card p  {
-    margin: 10px;
+    margin: 10px 0 10px  30px;
     color: #000;
     font-weight: 400;
     line-height: 16px;
@@ -312,7 +278,7 @@ footer ul li a {
 }
 
 .admin-details-card h6  {
-    margin: 10px;
+    margin: 10px 0 10px  30px;
     font-weight: 400;
     line-height: 16px;
     font-size: 14px;
@@ -320,8 +286,8 @@ footer ul li a {
 }
 
 .admin-details-card h4  {
-    margin: 10px;
-    color:  #DE5E35;
+    margin: 10px 0 10px  30px;
+    color:  rgb(61, 105, 11);
     font-weight: 600;
     line-height: 16px;
     font-size: 20px;
@@ -329,7 +295,7 @@ footer ul li a {
 }
 .admin-details-card small  {
     font-weight: 400;
-    color: #DE5E35;
+    color: rgb(116, 163, 5);
     line-height: 16px;
     font-size: 18px;  
 }
@@ -338,6 +304,119 @@ footer ul li a {
     font-size: 24px;
     font-weight: 380;
 }
+.details-boxlink {
+    width: calc(100% - 32px) !important;
+    overflow: hidden;
+   
+}
+.details-boxlink title {
+    height: 30px;
+}
+.admin-details-card div {
+    margin: 20px 16px 20px;
+    height: 240px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+.details-boxlink title {
+    height: 30px;
+}
+.admin-form {
+    display: inline-block;
+    float: right;
+    margin: 0 50px 10px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.admin-approval {
+    margin: 0 30px 0 0;
+}
+
+.admin-approval {
+    font-size: 0.9em;
+    border: 0;
+    background-color: #00B4CC;
+    color: #010A26;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 5px 8px 5px 10px;
+    cursor: pointer;
+  }
+
+  .admin-form {
+    color: #010A26;
+    font-weight: 700;
+    color: #0F3E39;
+  }
+  .user-detail-title {
+    color: #010A26;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 15px 20px;
+}  
+@media only screen and (min-width: 1000px) {
+    .wrapper {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    .admin-details-card {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .details-boxlink {
+        width: calc(100% - 20px) !important;
+        overflow: hidden;
+       
+    }
+
+    .admin-details-card div {
+        margin: 20px 16px 20px;
+        height: 240px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+    }
+    .details-boxlink title {
+        height: 30px;
+    }
+    .admin-form {
+        display: inline-block;
+        float: right;
+        margin: 0 50px 10px 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .admin-approval {
+        margin: 0 30px 0 0;
+    }
+
+    .admin-approval {
+        font-size: 0.9em;
+        border: 0;
+        background-color: #00B4CC;
+        color: #010A26;
+        font-weight: 700;
+        border-radius: 50px;
+        padding: 5px 8px 5px 10px;
+        cursor: pointer;
+      }
+
+      .admin-form {
+        color: #010A26;
+        font-weight: 700;
+        color: #0F3E39;
+      }
+      .user-detail-title {
+        color: #010A26;
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin: 30px 20px;
+    }   
+}
+
+
 .search {
     width: 100%;
     position: relative
@@ -390,4 +469,3 @@ footer ul li a {
         transform: translate(-0%, -580%);
       }
     }
-}
