@@ -3,10 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 const config = {
   development: {
-    database: process.env.DATABASE_URL,
+    dev: process.env.LOCALDB,
+  },
+  production: {
+    prod: process.env.DATABASE_URL,
   },
   test: {
-    user: process.env.DATABASE_URL_TEST,
-  }
+    test: process.env.DATABASE_URL_TEST,
+  },
 };
 export default config;
