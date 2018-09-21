@@ -35,7 +35,9 @@ describe('Test suite for authentication controller', () => {
         .expect(409);
       expect(res.body).to.be.an('object');
       expect(res.body).to.have.a.property('message');
-      expect(res.body.message).to.equal('User already exists');
+      expect(res.body.message).to.equal('user already exists');
+      expect(res.body).to.have.a.property('status');
+      expect(res.body.message).to.equal('not successful');
     });
     it('should not create account if the required fields are undefined', async () => {
       const res = await request(app)
