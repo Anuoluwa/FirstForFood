@@ -1,15 +1,5 @@
 
-import db from '../config/connect';
-
-const dropUsers = `
-DROP TABLE IF EXISTS users cascade`;
-
-const dropOrders = `
-DROP TABLE IF EXISTS menus cascade`;
-
-const dropMenus = `
-DROP TABLE IF EXISTS orders cascade`;
-
+import db from '../config/connection';
 
 const createUserTable = `
 CREATE TABLE IF NOT EXISTS users(
@@ -17,9 +7,10 @@ CREATE TABLE IF NOT EXISTS users(
     email VARCHAR(255) UNIQUE NOT NULL,
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
+    phone TEXT NOT NULL,
+    address TEXT NOT NULL,
     created_at TIMESTAMP Default Now(),
     updated_at TIMESTAMP Default Now()
-    
 )`;
 
 const createMenuTable = `
@@ -30,44 +21,22 @@ CREATE TABLE IF NOT EXISTS menus(
     price TEXT NULL,
     created_at TIMESTAMP Default Now(),
     updated_at TIMESTAMP Default Now(),
-    CONSTRAINT userMenu FOREIGN KEY (user_id) REFERENCES users(id)
+    userMenu SERIAL REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 const createOrderTable = `
 CREATE TABLE IF NOT EXISTS orders(
   id SERIAL PRIMARY KEY,
-  phone TEXT NOT NULL,
-  addr TEXT NOT NULL,
-  qty TEXT NOT NULL,
+  phone TEXT,
+  addr TEXT,
+  qty TEXT,
   amount TEXT ,
   status TEXT , 
-  CONSTRAINT UserOrders FOREIGN KEY (user_id) REFERENCES users(id)
-  CONSTRAINT MenuOrders FOREIGN KEY (menu_id) REFERENCES menus(id),
+  UserOrders SERIAL REFERENCES users(id) ON DELETE CASCADE ,
+  MenuOrders SERIAL REFERENCES menus(id) ON DELETE CASCADE,
   created_at TIMESTAMP Default Now(),
-  updated_at TIMESTAMP Default Now(),
+  updated_at TIMESTAMP Default Now()
 )`;
-
-db.query(dropOrders).then((response) => {
-  if (response) {
-    console.log('orders table dropped  successfully');
-  } else {
-    console.log('Error dropping orders table');
-  }
-  db.query(dropMenus).then((res) => {
-    if (res) {
-      console.log('menus table dropped successfully');
-    } else {
-      console.log('Error dropping menus table');
-    }
-    db.query(dropUsers).then((result) => {
-      if (result) {
-        console.log('users table dropped successfully');
-      } else {
-        console.log('Error dropping users table');
-      }
-    }).catch(error => console.log(`${error}`));
-  }).catch(error => console.log(`${error}`));
-}).catch(error => console.log(`${error}`));
 
 db.query(createUserTable).then((response) => {
   if (response) {
