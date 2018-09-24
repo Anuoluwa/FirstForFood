@@ -67,16 +67,6 @@ describe('Test suite for authentication controller', () => {
         });
       done();
     });
-    it('should return succcess status code', (done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send(newUser)
-        .end((err, res) => {
-          expect(res.status).to.eql(200);
-        });
-      done();
-    });
   });
 });
 describe('Create/ login user account', () => {
