@@ -1,19 +1,10 @@
-DROP DATABASE IF EXISTS "FirstforFoodDB";
-DROP DATABASE IF EXISTS "test-FirstforFoodDB";
-CREATE DATABASE "FirstforFoodDB";
-CREATE DATABASE "test-FirstforFoodDB";
-
-INSERT INTO comments (comment) VALUES ('sample comment')
-INSERT INTO answers (reply) VALUES ('sample answer')
-INSERT INTO questions (title, body) VALUES ('sample title','sample body')
-
-CREATE TABLE users (
+CREATE TABLE users(
   user_id SERIAL PRIMARY KEY,
   username varchar(50) not null,
   email varchar(100) not null,
   password varchar(50) not null,
   CONSTRAINT unique_data UNIQUE (email),
-  at TIMESTAMP DEFAULT Now()
+  created_at TIMESTAMP DEFAULT Now()
 );
 
 CREATE TABLE menus (
