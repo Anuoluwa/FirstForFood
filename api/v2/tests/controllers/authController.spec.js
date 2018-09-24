@@ -6,7 +6,7 @@ const { expect } = chai;
 
 describe('Test suite for authentication controller', () => {
   describe('Test suite for Server ', () => {
-    it("should return 'Welcome to SwiftFood API v2!'", () => {
+    it("should return 'wlecome to LiteStack API v1!'", () => {
       request(app)
         .get('/api/v2/')
         .expect(200, 'Successful!, Welcome to SwiftFood API v2!')
@@ -14,9 +14,15 @@ describe('Test suite for authentication controller', () => {
     });
     it('should return "Entry point not found"', () => {
       request(app)
-        .get('/api/v5/')
+        .get('/api/v2/3')
         .expect(404, '{"message":"Entry point not Found"}')
         .expect('Content-Type', 'text/html');
+    });
+    it('should return "Welcome to the client side"', () => {
+      request(app)
+        .get('/')
+        .expect(200, '{"message":"Welcome to SwiftFood API"}')
+        .expect('Content-Type', 'application/json');
     });
   });
   describe(' POST /auth/signup', () => {
@@ -33,7 +39,7 @@ describe('Test suite for authentication controller', () => {
         .set('Accept', 'application/json')
         .send(newUser)
         .end((err, res) => {
-          expect(res.status).to.eql(201);
+          expect(res.status).to.eql(200);
         });
       done();
     });
@@ -64,7 +70,7 @@ describe('Create/ login user account', () => {
   };
   it('should not sign in an unregistered user', (done) => {
     request(app)
-      .get('/api/v2/auth/login')
+      .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
       .send({
         username: 'johnfoe',
