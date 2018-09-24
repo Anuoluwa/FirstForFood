@@ -1,9 +1,11 @@
 export const createUserAccount = reqBody => (`
 INSERT INTO users
-(username, email, password)
+(username, email, password, phone, address)
  VALUES ('${reqBody.username}',
  '${reqBody.email}',
- '${reqBody.hashedPassword}')
+ '${reqBody.hashedPassword}',
+ '${reqBody.phone}',
+ '${reqBody.address}')
  RETURNING *
 `);
 
