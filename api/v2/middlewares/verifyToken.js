@@ -16,7 +16,7 @@ const verifyToken = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
     if (!token) {
-      return res.status(401).json({
+      return res.status(400).json({
         status: 'Unathorized',
         message: 'No Token provided',
       });
@@ -25,9 +25,9 @@ const verifyToken = (req, res, next) => {
     req.userId = decoded;
     next();
   } catch (error) {
-    return res.status(501).json({
-      status: 'unauthorized',
-      message: 'you are unauthorized for this operation',
+    return res.status(500).json({
+      status: 'Server Error',
+      message: 'Sorry, something went wrong, try again later!',
     });
   }
   return null;
