@@ -33,31 +33,24 @@ describe('Test suite for authentication controller', () => {
       phone: '07030099999',
       address: 'qwert asdf',
     };
-    it('should return succcess without null', (done) => {
+    it('should return succcess status code', (done) => {
       request(app)
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
         .send(newUser)
         .end((err, res) => {
-          expect(200);
-          expect('Content-Type', 'application/json');
-          expect(res.status).to.not.eql(null);
-          expect(res.body.message).to.not.equal(null);
-          expect(res.body.username).to.not.equal(null);
-          expect(res.body.email).to.not.equal(null);
-          expect(res.body.phone).to.not.equal(null);
-          expect(res.body.address).to.not.equal(null);
-          done();
+          expect(res.status).to.eql(200);
         });
+      done();
     });
     it('should create a new user', (done) => {
       request(app)
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
         .send(newUser)
-        .expect(201)
         .end((err, res) => {
           expect('Content-Type', 'application/json');
+          expect(res.body.status).to.equal('operation successful');
           expect(res.body.message).to.equal('User created successfully');
           expect(res.body.data).to.value('token');
           expect(res.body.data).to.have.a.property('username');
@@ -66,6 +59,23 @@ describe('Test suite for authentication controller', () => {
           expect(res.body.data).to.have.a.property('address');
         });
       done();
+    });
+    it('should not create account if the user already exists', (done) => {
+      request(app)
+        .get('/api/v2/auth/signup')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'johndoee',
+          email: 'johndoeee@gmail.com',
+          password: 'johndoee',
+          phone: '07030099990',
+          address: 'qwert asdf',
+        })
+        .end((err, res) => {
+          expect(res.body).to.be.an('object');
+          expect(res.status).to.eql(404);
+          done();
+        });
     });
   });
 });
