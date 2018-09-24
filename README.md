@@ -58,7 +58,7 @@ Project is currently being built with the Project Management Tool, Pivotal Track
 * A user should be able to see a history of ordered food
 
 
-## API Endpoints
+## API Endpoints For Version One
 
 ###
 
@@ -77,6 +77,21 @@ Project is currently being built with the Project Management Tool, Pivotal Track
 ## Additional Endpoint
 
 <tr><td>DELETE</td> <td>api/v1/orders/:orderId</td> <td>Cancel existing order</td></tr>
+
+</table>
+
+## API Endpoints For v2
+
+###
+
+<table>
+
+<tr><th>HTTP METHOD</th><th>ENDPOINT</th><th>ACTION</th><th>NOTE</th></tr>
+
+<tr><td>POST</td> <td>api/v2/auth/signup</td> <td>Register a user</td> <td>username,email,password,phone,address; are the required fields for new users</td></tr>
+
+<tr><td>POST</td> <td>api/v2/auth/login</td> <td>Login a user</td> <td>username,email,password; are the required fields for existing users</td></tr>
+
 
 </table>
 
