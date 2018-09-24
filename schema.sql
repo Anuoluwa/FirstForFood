@@ -1,12 +1,3 @@
-DROP DATABASE IF EXISTS "FirstforFoodDB";
-DROP DATABASE IF EXISTS "test-FirstforFoodDB";
-CREATE DATABASE "FirstforFoodDB";
-CREATE DATABASE "test-FirstforFoodDB";
-
-INSERT INTO users (username, email, password) VALUES ('johndoe', 'johndoe@gmail.com', 'johndoe');
-INSERT INTO menus (food_name,food_desc, price, user_id) VALUES ('Jollof Rice and Chicken','Jollof rice with peppered chicken', '#2300', 1)
-INSERT INTO orders (phone,addr, qty, amount, user_id, menu_id) VALUES ('0909999999','home address', '2', '4600', '1')
-
 CREATE TABLE users(
   user_id SERIAL PRIMARY KEY,
   username varchar(50) not null,
