@@ -60,23 +60,6 @@ describe('Test suite for authentication controller', () => {
         });
       done();
     });
-    it('should not create account if the user already exists', (done) => {
-      request(app)
-        .get('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'johndoee',
-          email: 'johndoeee@gmail.com',
-          password: 'johndoee',
-          phone: '07030099990',
-          address: 'qwert asdf',
-        })
-        .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.status).to.eql(404);
-          done();
-        });
-    });
   });
 });
 describe('Create/ login user account', () => {
