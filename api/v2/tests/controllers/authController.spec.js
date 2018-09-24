@@ -5,6 +5,26 @@ import app from '../../../../server';
 const { expect } = chai;
 
 describe('Test suite for authentication controller', () => {
+  describe('Test suite for Server ', () => {
+    it("should return 'wlecome to LiteStack API v1!'", () => {
+      request(app)
+        .get('/api/v2/')
+        .expect(200, 'Successful!, Welcome to SwiftFood API v2!')
+        .expect('Content-Type', 'application/json');
+    });
+    it('should return "Entry point not found"', () => {
+      request(app)
+        .get('/api/v2/3')
+        .expect(404, '{"message":"Entry point not Found"}')
+        .expect('Content-Type', 'text/html');
+    });
+    it('should return "Welcome to the client side"', () => {
+      request(app)
+        .get('/')
+        .expect(200, '{"message":"Welcome to SwiftFood API"}')
+        .expect('Content-Type', 'application/json');
+    });
+  });
   describe(' POST /auth/signup', () => {
     const newUser = {
       username: 'johndoe',
@@ -63,92 +83,13 @@ describe('Test suite for authentication controller', () => {
         });
       done();
     });
-    it('should not create account if the username field is empty', () => {
+    it('should return succcess status code', (done) => {
       request(app)
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
-        .send({
-          username: undefined,
-          email: 'johndoe@gmail.com',
-          password: 'johndoe',
-          phone: '07030000000',
-          address: 'asdf ggggg',
-        })
-        .expect(400)
+        .send(newUser)
         .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.body).to.have.a.property('message');
-        });
-    });
-    it('should not create account if the email field is empty', (done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'johndoe',
-          email: '',
-          password: 'johndoe',
-          phone: 'qwerty asdf',
-          address: '12345678900',
-        })
-        .expect(400)
-        .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.body).to.have.a.property('message');
-        });
-      done();
-    });
-    it('should not create account if the password field is empty', (done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'johndoe',
-          email: 'johndoe@gmail.com',
-          password: '',
-          phone: 'qwerty asdf',
-          address: '12345678900',
-        })
-        .expect(400)
-        .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.body).to.have.a.property('message');
-        });
-      done();
-    });
-    it('should not create account if the email format is invalid', (done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'johndoe',
-          email: 'johndoe@gmail',
-          password: 'johndoe',
-          phone: 'qwerty asdf',
-          address: '12345678900',
-        })
-        .expect(400)
-        .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.body).to.have.a.property('message');
-        });
-      done();
-    });
-    it('should not create account if the password is not greater than 5', (done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send({
-          username: 'johndoe',
-          email: 'johndoe@gmail.com',
-          password: 'johnd',
-          phone: 'qwerty asdf',
-          address: '12345678900',
-        })
-        .expect(400)
-        .end((err, res) => {
-          expect(res.body).to.have.a.property('message');
-          expect(res.body).to.be.an('object');
+          expect(res.status).to.eql(200);
         });
       done();
     });
@@ -202,6 +143,16 @@ describe('Create/ login user account', () => {
         expect(res.body.status).to.equal('operation successful');
         expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('login successful');
+      });
+    done();
+  });
+  it('should return succcess status code', (done) => {
+    request(app)
+      .post('/api/v2/auth/login')
+      .set('Accept', 'application/json')
+      .send(user)
+      .end((err, res) => {
+        expect(res.status).to.eql(200);
       });
     done();
   });
