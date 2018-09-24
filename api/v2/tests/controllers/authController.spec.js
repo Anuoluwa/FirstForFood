@@ -105,7 +105,11 @@ describe('Create/ login user account', () => {
     request(app)
       .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
-      .send(user)
+      .send({
+        username: 'johnfoe',
+        email: 'johndoe@gmail.com',
+        password: 'johnfoe',
+      })
       .expect(404)
       .end((err, res) => {
         expect(res.body).to.have.a.property('message');
@@ -113,21 +117,6 @@ describe('Create/ login user account', () => {
         expect(res.body.status).to.equal('user details not found');
         expect(res.body).to.be.an('object');
         expect(res.body.message).to.equal('Invalid username or password');
-      });
-    done();
-  });
-  it('should not sign in a user with a wrong password', (done) => {
-    request(app)
-      .post('/api/v2/auth/login')
-      .set('Accept', 'application/json')
-      .send(user)
-      .expect(400)
-      .end((err, res) => {
-        expect(res.body).to.have.a.property('message');
-        expect(res.body).to.have.a.property('status');
-        expect(res.body.status).to.equal('bad request');
-        expect(res.body).to.be.an('object');
-        expect(res.body.message).to.equal('password mismatch');
       });
     done();
   });
