@@ -67,22 +67,6 @@ describe('Test suite for authentication controller', () => {
         });
       done();
     });
-
-    it('should not create account if the user already exists', (done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .set('Accept', 'application/json')
-        .send(newUser)
-        .expect(409)
-        .end((err, res) => {
-          expect(res.body).to.be.an('object');
-          expect(res.body).to.have.a.property('message');
-          expect(res.body.message).to.equal('user already exists');
-          expect(res.body).to.have.a.property('status');
-          expect(res.body.status).to.equal('not successful');
-        });
-      done();
-    });
     it('should return succcess status code', (done) => {
       request(app)
         .post('/api/v2/auth/signup')
