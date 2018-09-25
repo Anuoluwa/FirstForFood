@@ -5,6 +5,7 @@ import Order from '../controllers/orderController';
 import Menu from '../controllers/menuController';
 import verifyToken from '../middlewares/verifyToken';
 import verifyAdmin from '../middlewares/verifyAdmin';
+import MenuValidator from '../middlewares/menuValidator';
 
 const router = express.Router();
 
@@ -22,7 +23,7 @@ router.get('/users/:userId/orders', verifyToken, Order.userOrderHistory);
 
 router.get('/menus', Menu.getAllMenu);
 router.get('/menu/:menuId', Menu.getOneMenu);
-router.post('/menu', verifyToken, verifyAdmin, Menu.createMenu);
+router.post('/menu', verifyToken, verifyAdmin, MenuValidator.validateInput, Menu.createMenu);
 router.put('/menu/:menuId', verifyToken, Menu.updateMenu);
 router.delete('/menu/:menuId', verifyToken, Menu.deleteMenu);
 

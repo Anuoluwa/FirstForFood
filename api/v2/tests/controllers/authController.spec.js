@@ -6,7 +6,7 @@ const { expect } = chai;
 
 describe('Test suite for authentication controller', () => {
   describe('Test suite for Server ', () => {
-    it("should return 'wlecome to LiteStack API v1!'", () => {
+    it("should return 'welcome message'", () => {
       request(app)
         .get('/api/v2/')
         .expect(200, 'Successful!, Welcome to SwiftFood API v2!')
