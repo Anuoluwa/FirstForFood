@@ -7,7 +7,11 @@ notifications:
     false
 before_install:
   - npm i -g npm@6.3.0
-  
+
+before_script:
+  - npm run drop:test
+  - npm run migrate:test
+    
 after_script:
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < coverage/lcov.info
