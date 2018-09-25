@@ -1,6 +1,3 @@
-import { findById } from '../models/query';
-import db from '../config/connection';
-
 /** @function verifyAdmin
 /* @param {object} req req object
 /* @param {object} res res object
@@ -10,24 +7,17 @@ import db from '../config/connection';
 */
 const verifyAdmin = async (req, res, next) => {
   try {
-    const { userId } = req.body;
-    const getUser = await db.query(findById(userId));
-    if (getUser.rowCount === 0) {
-      return res.status(404).json({
-        status: 'user could not found',
-        message: 'Invalid username or password!',
-      });
-    }
-    if (getUser.rows[0].username !== 'adminuser') {
+    if (req.userId.email !== 'adminuser@gmail.com') {
       return res.status(403).json({ message: 'User is not authorized to access this endpoint' });
     }
-    next();
-    return null;
+    if (req.userId.email === 'adminuser@gmail.com') {
+      next();
+    }
   } catch (error) {
     console.log({ message: `${error}` });
     return res.status(500).json({
       status: 'operation not successful',
-      message: 'Oops, something went wrong, try again!',
+      message: 'Oops,...something went wrong on this admin route, try again!',
     });
   }
 };
