@@ -9,19 +9,17 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(255) NOT NULL,
     phone TEXT NOT NULL,
     address TEXT NOT NULL,
-    created_at TIMESTAMP Default Now(),
-    updated_at TIMESTAMP Default Now()
+    createdAt TIMESTAMP Default Now()
 )`;
 
 const createMenuTable = `
 CREATE TABLE IF NOT EXISTS menus(
     id SERIAL PRIMARY KEY,
-    food_name VARCHAR(255) NOT NULL,
-    food_descr TEXT NOT NULL,
+    foodName VARCHAR(255) NOT NULL,
+    foodDescr TEXT NOT NULL,
     price TEXT NULL,
-    created_at TIMESTAMP Default Now(),
-    updated_at TIMESTAMP Default Now(),
-    userMenu SERIAL REFERENCES users(id) ON DELETE CASCADE
+    createdAt TIMESTAMP Default Now(),
+    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 const createOrderTable = `
@@ -32,10 +30,9 @@ CREATE TABLE IF NOT EXISTS orders(
   qty TEXT,
   amount TEXT ,
   status TEXT , 
-  UserOrders SERIAL REFERENCES users(id) ON DELETE CASCADE ,
-  MenuOrders SERIAL REFERENCES menus(id) ON DELETE CASCADE,
-  created_at TIMESTAMP Default Now(),
-  updated_at TIMESTAMP Default Now()
+  userId SERIAL REFERENCES users(id) ON DELETE CASCADE ,
+  menuId SERIAL REFERENCES menus(id) ON DELETE CASCADE,
+  createdAt TIMESTAMP Default Now()
 )`;
 
 db.query(createUserTable).then((response) => {
