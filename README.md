@@ -88,9 +88,11 @@ Project is currently being built with the Project Management Tool, Pivotal Track
 
 <tr><th>HTTP METHOD</th><th>ENDPOINT</th><th>ACTION</th><th>NOTE</th></tr>
 
-<tr><td>POST</td> <td>api/v2/auth/signup</td> <td>Register a user</td> <td>username,email,password,phone,address; are the required fields for new users</td></tr>
+<tr><td>POST</td> <td>api/v2/auth/signup</td> <td>Register a user</td> <td>username, email, password, phone, address; are the required fields for new users</td></tr>
 
-<tr><td>POST</td> <td>api/v2/auth/login</td> <td>Login a user</td> <td>username,email,password; are the required fields for existing users</td></tr>
+<tr><td>POST</td> <td>api/v2/auth/login</td> <td>Login a user</td> <td>username, email, password; are the required fields for existing users</td></tr>
+
+<tr><td>POST</td> <td>api/v2/menu (Admin protected routes)</td> <td>Create a menu</td> <td>foodName, foodDescr, price; are the required fields </td></tr>to create a new menu
 
 
 </table>
