@@ -1,5 +1,5 @@
 import db from '../config/connection';
-import { createMenu, checkFoodName } from '../models/query';
+import { createMenu, checkFoodName, getAllMenu } from '../models/query';
 
 class MenuController {
   static async createMenu(req, res) {
@@ -36,7 +36,26 @@ class MenuController {
   }
 
   static async getAllMenu(req, res) {
-    res.status(200).json({ message: 'get all menu endpoint logic here' });
+    try {
+      const getMenu = await db.query(getAllMenu());
+      if (getMenu.rowCount === 0) {
+        return res.status(200).json({
+          status: 'operation successful',
+          message: 'Sorry no menu at the moment',
+        });
+      }
+      return res.status(200).json({
+        status: 'operation successful',
+        message: 'these are the available menu in our restaurant',
+        menu: getMenu.rows,
+      });
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 'operation not successful',
+        message: 'Sorry, something went wrong in getting all menu!',
+      });
+    }
   }
 
   static async getOneMenu(req, res) {

@@ -24,7 +24,7 @@ export default class AuthController {
   static async signUp(req, res) {
     try {
       const {
-        username, email, password, phone, address,
+        username, email, password, phone, address, admin,
       } = req.body;
       const userExists = await db.query(checkUser(username, email));
       if (userExists.rowCount > 0) {
@@ -35,7 +35,7 @@ export default class AuthController {
       }
       const hashedPassword = await PasswordHelper.hashPassword(password);
       const newUser = {
-        email, username, hashedPassword, phone, address,
+        username, email, hashedPassword, phone, address, admin,
       };
       const createUser = await db.query(createUserAccount(newUser));
       if (createUser.rowCount === 0) {
@@ -44,15 +44,21 @@ export default class AuthController {
           message: 'user not created',
         });
       }
-      const token = jwt.sign({ id: createUser.rows[0].id, email: createUser.rows[0].email },
-        process.env.SECRET_KEY, { expiresIn: 86400 });
+      const token = jwt.sign(
+        {
+          id: createUser.rows[0].id,
+          email: createUser.rows[0].email,
+          admin: createUser.rows[0].admin,
+        },
+        process.env.SECRET_KEY, { expiresIn: 86400 },
+      );
       const data = {
         token,
         username: createUser.rows[0].username,
         email: createUser.rows[0].email,
         phone: createUser.rows[0].phone,
         address: createUser.rows[0].address,
-        roles: createUser.rows[0].roles,
+        admin: createUser.rows[0].admin,
       };
       return res.status(201).json({
         status: 'operation successful',
@@ -98,8 +104,10 @@ export default class AuthController {
           message: 'password mismatch',
         });
       }
-      const token = jwt.sign({ id: getUser.rows[0].id, email: getUser.rows[0].email },
-        process.env.SECRET_KEY, { expiresIn: 86400 });
+      const token = jwt.sign(
+        { id: getUser.rows[0].id, email: getUser.rows[0].email, admin: getUser.rows[0].admin },
+        process.env.SECRET_KEY, { expiresIn: 86400 },
+      );
       const data = {
         token,
         username: getUser.rows[0].username,
