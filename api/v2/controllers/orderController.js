@@ -1,6 +1,6 @@
 import db from '../config/connection';
 import {
-  checkMenuName, createOrder, findUser, getUserOrders,
+  checkMenuName, createOrder, findUser, getUserOrders, getAllOrders,
 } from '../models/query';
 
 class OrderController {
@@ -79,7 +79,26 @@ class OrderController {
   }
 
   static async getAllOrder(req, res) {
-    res.status(200).json({ message: 'get all order endpoint logic here' });
+    try {
+      const getQuestions = await db.query(getAllOrders());
+      if (getQuestions.rowCount === 0) {
+        return res.status(404).json({
+          status: 'operation not successful',
+          message: 'no order found',
+        });
+      }
+      return res.status(200).json({
+        status: 'operation successful',
+        message: 'these are the current orders',
+        orders: getQuestions.rows,
+      });
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 'operation not successful',
+        message: 'Sorry, something went wrong, in getting all orders try again!',
+      });
+    }
   }
 
   static async getOneOrder(req, res) {

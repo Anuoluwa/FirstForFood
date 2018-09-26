@@ -101,3 +101,9 @@ export const getUserOrders = userId => (`
 SELECT * from orders
 WHERE UserId = ${userId} ORDER BY id DESC
 `);
+/**
+ * @method getAllOrders
+ * @description it returns all orders
+ * @returns {Object} Object
+*/
+export const getAllOrders = () => ('SELECT * from orders');
