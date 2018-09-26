@@ -12,8 +12,8 @@ class menuValidator {
       foodDescr,
       price,
     } = req.body;
-    if (typeof foodName !== 'undefined') {
-      return res.status(400).json({ message: '"foodName" must be undefined!' });
+    if (typeof foodName === 'undefined') {
+      return res.status(400).json({ message: '"foodName" must be not undefined!' });
     }
     if (foodName === ' ') {
       return res.status(400).json({ message: '"foodName" must not be empty!' });
