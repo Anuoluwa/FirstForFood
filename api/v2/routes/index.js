@@ -21,7 +21,7 @@ router.put('/orders/:orderId', verifyToken, verifyAdmin, Order.updateOrder);
 router.delete('/orders/:orderId', verifyToken, Order.deleteOrder);
 router.get('/users/:userId/orders', verifyToken, Order.userOrderHistory);
 
-router.get('/menus', Menu.getAllMenu);
+router.get('/menu', Menu.getAllMenu);
 router.get('/menu/:menuId', Menu.getOneMenu);
 router.post('/menu', verifyToken, verifyAdmin, MenuValidator.validateInput, Menu.createMenu);
 router.put('/menu/:menuId', verifyToken, Menu.updateMenu);

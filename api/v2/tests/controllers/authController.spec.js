@@ -26,18 +26,17 @@ describe('Test suite for authentication controller', () => {
     });
   });
   describe(' POST /auth/signup', () => {
-    const newUser = {
-      username: 'johndoe',
-      email: 'johndoe@gmail.com',
-      password: 'johndoe',
-      phone: '07030099999',
-      address: 'qwert asdf',
-    };
     it('should return succcess status code', (done) => {
       request(app)
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
-        .send(newUser)
+        .send({
+          username: 'johnjane',
+          email: 'johnjane@gmail.com',
+          password: 'johnjane',
+          phone: '07030099999',
+          address: 'qwert asdf',
+        })
         .end((err, res) => {
           expect(res.status).to.eql(200);
         });
@@ -47,7 +46,13 @@ describe('Test suite for authentication controller', () => {
       request(app)
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
-        .send(newUser)
+        .send({
+          username: 'johnjanee',
+          email: 'johnjanee@gmail.com',
+          password: 'johnjanee',
+          phone: '07030099999',
+          address: 'qwert asdf',
+        })
         .end((err, res) => {
           expect('Content-Type', 'application/json');
           expect(res.body.status).to.equal('operation successful');
@@ -63,11 +68,6 @@ describe('Test suite for authentication controller', () => {
   });
 });
 describe('Create/ login user account', () => {
-  const user = {
-    username: 'johndoe',
-    email: 'johndoe@gmail.com',
-    password: 'johndoe',
-  };
   it('should not sign in an unregistered user', (done) => {
     request(app)
       .post('/api/v2/auth/login')
@@ -91,7 +91,11 @@ describe('Create/ login user account', () => {
     request(app)
       .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
-      .send(user)
+      .send({
+        username: 'johnfoee',
+        email: 'johndoee@gmail.com',
+        password: 'johnfoee',
+      })
       .expect(200)
       .end((err, res) => {
         expect(res.body).to.have.a.property('message');
@@ -106,7 +110,11 @@ describe('Create/ login user account', () => {
     request(app)
       .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
-      .send(user)
+      .send({
+        username: 'johnfoeee',
+        email: 'johndoeee@gmail.com',
+        password: 'johnfoeee',
+      })
       .end((err, res) => {
         expect(res.status).to.eql(200);
       });

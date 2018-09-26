@@ -5,12 +5,12 @@
 */
 export const createUserAccount = reqBody => (`
 INSERT INTO users
-(username, email, password, phone, address)
+(username, email, password, phone, address, admin)
  VALUES ('${reqBody.username}',
  '${reqBody.email}',
  '${reqBody.hashedPassword}',
  '${reqBody.phone}',
- '${reqBody.address}')
+ '${reqBody.address}', '${reqBody.admin}')
  RETURNING *
 `);
 
@@ -42,3 +42,45 @@ FROM menus
 WHERE menus.userId = ${userId}
 AND 
 foodName = '${foodName}' `);
+
+/**
+ * @method getAllMenu
+ * @description This returns all menu
+ * @returns {Object} Object
+*/
+export const getAllMenu = () => ('SELECT * from menus');
+
+/**
+ * @method findMenu
+ * @description This gets a menu by id
+ * @returns {Object} Object
+*/
+export const findMenu = menuId => (` SELECT * FROM menus WHERE id = ${menuId}`);
+/**
+ * @function DeleteMenu
+ * @description This deletes a menu
+ * @returns {Object} Object
+*/
+export const deleteMenu = (menuId, userId) => (`
+DELETE FROM menus
+WHERE menus.id = ${menuId} AND menus.userId = ${userId}`);
+
+/**
+ * @function checkMenuId
+ * @description This gets a menu by id
+ * @returns {Object} Object
+*/
+export const checkMenuId = menuId => (
+  `SELECT id FROM menus WHERE menus.id = ${menuId}`
+);
+
+/**
+ * @function postAnswer
+ * @description This posts a question
+ * @returns {Object} Object
+*/
+export const postAnswer = (answerBody, userId, questionId) => (`
+INSERT INTO answers 
+(answer_body, user_id, question_id) 
+VALUES 
+('${answerBody}', ${userId}, ${questionId}) RETURNING *`);
