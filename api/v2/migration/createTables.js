@@ -4,11 +4,12 @@ import db from '../config/connection';
 const createUserTable = `
 CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
     username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     phone TEXT NOT NULL,
     address TEXT NOT NULL,
+    admin TEXT NOT NULL,
     createdAt TIMESTAMP Default Now()
 )`;
 
