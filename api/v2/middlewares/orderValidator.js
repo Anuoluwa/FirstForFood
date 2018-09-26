@@ -28,13 +28,17 @@ class orderValidator {
   static validateId(req, res, next) {
     const { id } = req.params;
     const parsedId = parseInt(id, 10);
-    if (parsedId.length === '') {
+    if (typeof parsedId !== 'string') {
+      return res.status(400).json({ message: '"ID" should not be a string!' })
+        .end();
+    }
+    if (parsedId.length === ' ') {
       return res.status(400).json({ message: '"ID" should not be empty!' })
         .end();
     }
-    if (Number.isNaN(parsedId) === true) {
+    if (Number.isNaN(parsedId) === false) {
       return res.status(400).json({
-        message: 'OrderId must be a number',
+        message: 'UserId must be a number',
       });
     }
     next();
