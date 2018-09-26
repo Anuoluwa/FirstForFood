@@ -42,29 +42,29 @@ describe('Test suite for authentication controller', () => {
         });
       done();
     });
-//     it('should create a new user', (done) => {
-//       request(app)
-//         .post('/api/v2/auth/signup')
-//         .set('Accept', 'application/json')
-//         .send({
-//           username: 'johnjanee',
-//           email: 'johnjanee@gmail.com',
-//           password: 'johnjanee',
-//           phone: '07030099999',
-//           address: 'qwert asdf',
-//         })
-//         .end((err, res) => {
-//           expect('Content-Type', 'application/json');
-//           expect(res.body.status).to.equal('operation successful');
-//           expect(res.body.message).to.equal('User created successfully');
-//           expect(res.body.data).to.value('token');
-//           expect(res.body.data).to.have.a.property('username');
-//           expect(res.body.data).to.have.a.property('email');
-//           expect(res.body.data).to.have.a.property('phone');
-//           expect(res.body.data).to.have.a.property('address');
-//         });
-//       done();
-//     });
+    it('should create a new user', (done) => {
+      request(app)
+        .post('/api/v2/auth/signup')
+        .set('Accept', 'application/json')
+        .send({
+          username: 'johnjanee',
+          email: 'johnjanee@gmail.com',
+          password: 'johnjanee',
+          phone: '07030099999',
+          address: 'qwert asdf',
+        })
+        .end((err, res) => {
+          expect('Content-Type', 'application/json');
+          expect(res.body.status).to.equal('operation successful');
+          expect(res.body.message).to.equal('User created successfully');
+          expect(res.body.data).to.value('token');
+          expect(res.body.data).to.have.a.property('username');
+          expect(res.body.data).to.have.a.property('email');
+          expect(res.body.data).to.have.a.property('phone');
+          expect(res.body.data).to.have.a.property('address');
+        });
+      done();
+    });
   });
 });
 describe('Create/ login user account', () => {

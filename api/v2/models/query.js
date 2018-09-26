@@ -14,7 +14,7 @@ INSERT INTO users
  RETURNING *
 `);
 
-export const findUser = username => `SELECT * FROM users WHERE username = '${username}'`;
+export const findUser = userId => `SELECT * FROM users WHERE id = '${userId}'`;
 
 export const checkUser = (username, email) => `
 SELECT * FROM users 
@@ -74,13 +74,20 @@ export const checkMenuId = menuId => (
   `SELECT id FROM menus WHERE menus.id = ${menuId}`
 );
 
+
+export const checkMenuName = menuId => (`
+SELECT *
+FROM menus  
+WHERE menus.id = ${menuId}`);
+
 /**
- * @function postAnswer
- * @description This posts a question
+ * @function createOrder
+ * @description This creates order
  * @returns {Object} Object
 */
-export const postAnswer = (answerBody, userId, questionId) => (`
-INSERT INTO answers 
-(answer_body, user_id, question_id) 
-VALUES 
-('${answerBody}', ${userId}, ${questionId}) RETURNING *`);
+export const createOrder = requestBody => (`
+INSERT INTO orders 
+(qty, amount, userId, menuId)
+VALUES
+('${requestBody.qty}', '${requestBody.amount}', ${requestBody.userId}, ${requestBody.menuId})
+RETURNING *`);

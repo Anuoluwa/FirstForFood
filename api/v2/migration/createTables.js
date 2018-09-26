@@ -26,11 +26,9 @@ CREATE TABLE IF NOT EXISTS menus(
 const createOrderTable = `
 CREATE TABLE IF NOT EXISTS orders(
   id SERIAL PRIMARY KEY,
-  phone TEXT,
-  addr TEXT,
   qty TEXT,
   amount TEXT ,
-  status TEXT , 
+  status TEXT DEFAULT ('New'), 
   userId SERIAL REFERENCES users(id) ON DELETE CASCADE ,
   menuId SERIAL REFERENCES menus(id) ON DELETE CASCADE,
   createdAt TIMESTAMP Default Now()
