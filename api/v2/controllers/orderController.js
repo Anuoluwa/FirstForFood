@@ -1,5 +1,7 @@
 import db from '../config/connection';
-import { checkMenuName, createOrder, findUser } from '../models/query';
+import {
+  checkMenuName, createOrder, findUser, getUserOrders,
+} from '../models/query';
 
 class OrderController {
   static async createOrder(req, res) {
@@ -52,6 +54,30 @@ class OrderController {
     }
   }
 
+  static async userOrderHistory(req, res) {
+    try {
+      const { userId } = req.params;
+      const userOrders = await db.query(getUserOrders(userId));
+      if (userOrders.rowCount > 0) {
+        return res.status(200).json({
+          status: 'operation successful',
+          message: 'These are your order history',
+          orders: userOrders.rows,
+        });
+      }
+      return res.status(404).json({
+        status: 'operation not successful',
+        message: 'no order yet',
+      });
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 'operation not successful',
+        message: 'Sorry, something went wrong, for order history try again!',
+      });
+    }
+  }
+
   static async getAllOrder(req, res) {
     res.status(200).json({ message: 'get all order endpoint logic here' });
   }
@@ -66,10 +92,6 @@ class OrderController {
 
   static async deleteOrder(req, res) {
     res.status(200).json({ message: 'delete order endpoint logic here' });
-  }
-
-  static async userOrderHistory(req, res) {
-    res.status(200).json({ message: 'order history for users endpoint logic here' });
   }
 }
 
