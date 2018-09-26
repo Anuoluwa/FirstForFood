@@ -91,3 +91,13 @@ INSERT INTO orders
 VALUES
 ('${requestBody.qty}', '${requestBody.amount}', ${requestBody.userId}, ${requestBody.menuId})
 RETURNING *`);
+
+/**
+ * @method getUserOrders
+ * @description it returns user order history
+ * @returns {Object} Object
+*/
+export const getUserOrders = userId => (`
+SELECT * from orders
+WHERE UserId = ${userId} ORDER BY id DESC
+`);
