@@ -1,7 +1,7 @@
 import db from '../config/connection';
 import {
   checkMenuName, createOrder, findUser, getUserOrders, getAllOrders, findOrder,
-  getMenuByOrderId,
+  updateOrder,
 } from '../models/query';
 
 class OrderController {
@@ -115,7 +115,7 @@ class OrderController {
         });
       }
       const userId = getOrder.rows[0].userid;
-      const menuId = getOrder.rows[0].userid;
+      const menuId = getOrder.rows[0].menuid;
       const userInfo = await db.query(findUser(userId));
       const menuInfo = await db.query(checkMenuName(menuId));
       if (getOrder.rowCount > 0) {
@@ -143,7 +143,57 @@ class OrderController {
   }
 
   static async updateOrder(req, res) {
-    res.status(200).json({ message: 'update order endpoint logic here' });
+    try {
+      const { orderId } = req.params;
+      const getOrder = await db.query(findOrder(orderId));
+      if (getOrder.rowCount === 0) {
+        return res.status(404).json({
+          status: 'operation not successful',
+          message: 'order does not exist',
+        });
+      }
+      const userId = getOrder.rows[0].userid;
+      const menuId = getOrder.rows[0].menuid;
+      const userInfo = await db.query(findUser(userId));
+      const menuInfo = await db.query(checkMenuName(menuId));
+      const status = getOrder.rows[0].id;
+      const updatedOrder = await db.query(updateOrder(status, orderId));
+      console.log(menuInfo.rows);
+      console.log(updatedOrder.rows);
+
+      if (getOrder.rowCount > 0) {
+        const order = {
+          id: updatedOrder.rows[0].id,
+          quantity: updatedOrder.rows[0].qty,
+          amount: updatedOrder.rows[0].amount,
+          status: updatedOrder.rows[0].status,
+        };
+        const userDetails = {
+          username: userInfo.rows[0].username,
+          email: userInfo.rows[0].email,
+          address: userInfo.rows[0].address,
+          phone: userInfo.rows[0].phone,
+        };
+        const menuIdDetails = {
+          foodName: menuInfo.rows[0].foodname,
+          foodDescr: menuInfo.rows[0].fooddescr,
+          price: menuInfo.rows[0].price,
+        };
+        return res.status(201).json({
+          status: 'successful',
+          message: 'Order Details',
+          order,
+          userDetails,
+          menuIdDetails,
+        });
+      }
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 'operation not successful',
+        message: 'Sorry, something went wrong, in getting all orders try again!',
+      });
+    }
   }
 
   static async deleteOrder(req, res) {
