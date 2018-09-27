@@ -135,5 +135,8 @@ export const getMenuByOrderId = menuId => (
  * @description edit order status
  * @returns {Object} Object
 */
-export const updateOrder = status => (`UPDATE orders SET status = '${status}'
+export const updateOrder = (status, orderId) => (`
+UPDATE orders 
+SET status = '${status}'
+WHERE id = ${orderId}
 RETURNING *`);
