@@ -59,11 +59,13 @@ class OrderController {
     try {
       const { userId } = req.params;
       const userOrders = await db.query(getUserOrders(userId));
+      const userInfo = await db.query(findUser(userId));
       if (userOrders.rowCount > 0) {
         return res.status(200).json({
           status: 'operation successful',
           message: 'These are your order history',
           orders: userOrders.rows,
+          userDetails: userInfo.rows,
         });
       }
       return res.status(404).json({
@@ -106,31 +108,34 @@ class OrderController {
     try {
       const { orderId } = req.params;
       const getOrder = await db.query(findOrder(orderId));
-      console.log(getOrder.rows[0].menuid);
-      console.log(getOrder.rows[0].userid);
       if (getOrder.rowCount === 0) {
         return res.status(404).json({
           status: 'operation not successful',
           message: 'order does not exist',
         });
       }
-      const userId = getOrder.rows[0].userid;
-      const menuId = getOrder.rows[0].menuid;
-      const userInfo = await db.query(findUser(userId));
-      const menuInfo = await db.query(checkMenuName(menuId));
+
       if (getOrder.rowCount > 0) {
+        const userId = getOrder.rows[0].userid;
+        const menuId = getOrder.rows[0].menuid;
+        console.log('menu id', getOrder.rows[0].menuid);
+        console.log('USER ID', getOrder.rows[0].userid);
+        const userInfo = await db.query(findUser(userId));
+        const menuInfo = await db.query(checkMenuName(menuId));
         const order = {
           id: getOrder.rows[0].id,
           quantity: getOrder.rows[0].qty,
           amount: getOrder.rows[0].qty,
           status: getOrder.rows[0].status,
-          userDetails: userInfo.rows,
-          menuIdDetails: menuInfo.rows,
+          userId: getOrder.rows[0].userid,
+          menuId: getOrder.rows[0].menuid,
         };
         return res.status(201).json({
           status: 'successful',
           message: 'Order Details',
           order,
+          userDetails: userInfo.rows,
+          menuIdDetails: menuInfo.rows,
         });
       }
     } catch (error) {
