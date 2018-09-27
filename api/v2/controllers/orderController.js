@@ -140,17 +140,6 @@ class OrderController {
         message: 'Sorry, something went wrong, in getting all orders try again!',
       });
     }
-
-    // console.log(getOrder);
-    // const orderMenu = await db.query(getMenuByOrderId(menuId));
-    // result.order = getOrder.rows[0];
-    // result.menu = orderMenu.rows;
-    // return res.status(200).json({
-    //   status: 'success',
-    //   message: 'order returned successfully',
-    //   data: result,
-
-    // });
   }
 
   static async updateOrder(req, res) {
