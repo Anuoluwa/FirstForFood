@@ -6,8 +6,6 @@
 /* @returns {Object} status 401 if is a user
 */
 const verifyAdmin = async (req, res, next) => {
-  console.log(req.userId.admin);
-  console.log(req.userId);
   try {
     if (req.userId.admin === 'false') {
       return res.status(403).json({ message: 'User is not authorized to access this endpoint' });
