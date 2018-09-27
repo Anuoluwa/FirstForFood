@@ -107,3 +107,25 @@ WHERE UserId = ${userId} ORDER BY id DESC
  * @returns {Object} Object
 */
 export const getAllOrders = () => ('SELECT * from orders');
+
+export const getUserOrder = userId => (`
+SELECT * from orders
+WHERE userIid = ${userId} ORDER BY id DESC
+`);
+
+/**
+ * @method findOrder
+ * @description get order by id
+ * @returns {Object} Object
+*/
+export const findOrder = orderId => (` SELECT * FROM orders WHERE id = ${orderId}`);
+
+/**
+ * @function getMenuByOrderId
+ * @description return menu by order id
+ * @returns {Object} Object
+*/
+export const getMenuByOrderId = menuId => (
+  `SELECT * FROM orders m WHERE m.menuId = ${menuId}
+  `
+);
