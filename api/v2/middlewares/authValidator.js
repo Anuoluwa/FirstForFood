@@ -18,7 +18,7 @@ export default class authValidator {
 
   static signup(req, res, next) {
     const {
-      username, email, password, phone, address,
+      username, email, password, phone, address, admin,
     } = req.body;
     const validUsername = /^[a-zA-Z\-]+$/.test(username);
     const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
@@ -117,6 +117,26 @@ export default class authValidator {
     if (!(/^[#.0-9a-zA-Z\s,-]+$/.test(address))) {
       return res.status(400)
         .json({ message: '"address" must be have a valid characters' });
+    }
+    if (typeof admin === 'undefined') {
+      return res.status(400)
+        .json({ message: '"admin" field must not be empty' });
+    }
+    if (admin.length === '') {
+      return res.status(400)
+        .json({ message: '"admin" field must not be empty' });
+    }
+    if (admin.length < 4) {
+      return res.status(400)
+        .json(
+          { message: '"admin" must be a string, with minimum length of 4' },
+        );
+    }
+    if (admin.length > 8) {
+      return res.status(400)
+        .json(
+          { message: '"admin" must be a string, with maximum length of 8' },
+        );
     }
     next();
   }
