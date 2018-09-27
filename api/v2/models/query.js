@@ -129,3 +129,11 @@ export const getMenuByOrderId = menuId => (
   `SELECT * FROM orders m WHERE m.menuId = ${menuId}
   `
 );
+
+/**
+ * @function updateOrder
+ * @description edit order status
+ * @returns {Object} Object
+*/
+export const updateOrder = status => (`UPDATE orders SET status = '${status}'
+RETURNING *`);
