@@ -26,9 +26,8 @@ class orderValidator {
   }
 
   static validateId(req, res, next) {
-    const { id } = req.params;
-    const parsedId = parseInt(id, 10);
-    if (Number.isNaN(parsedId) === true) {
+    const { orderId } = req.params;
+    if (!Number(orderId)) {
       return res.status(400).json({
         message: 'UserId must be a number',
       });
