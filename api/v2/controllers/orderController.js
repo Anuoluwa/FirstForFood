@@ -1,6 +1,7 @@
 import db from '../config/connection';
 import {
-  checkMenuName, createOrder, findUser, getUserOrders, getAllOrders,
+  checkMenuName, createOrder, findUser, getUserOrders, getAllOrders, findOrder,
+  getMenuByOrderId,
 } from '../models/query';
 
 class OrderController {
@@ -102,7 +103,54 @@ class OrderController {
   }
 
   static async getOneOrder(req, res) {
-    res.status(200).json({ message: 'get one specific order endpoint logic here' });
+    try {
+      const { orderId } = req.params;
+      const getOrder = await db.query(findOrder(orderId));
+      console.log(getOrder.rows[0].menuid);
+      console.log(getOrder.rows[0].userid);
+      if (getOrder.rowCount === 0) {
+        return res.status(404).json({
+          status: 'operation not successful',
+          message: 'order does not exist',
+        });
+      }
+      const userId = getOrder.rows[0].userid;
+      const menuId = getOrder.rows[0].userid;
+      const userInfo = await db.query(findUser(userId));
+      const menuInfo = await db.query(checkMenuName(menuId));
+      if (getOrder.rowCount > 0) {
+        const order = {
+          id: getOrder.rows[0].id,
+          quantity: getOrder.rows[0].qty,
+          amount: getOrder.rows[0].qty,
+          status: getOrder.rows[0].status,
+          userDetails: userInfo.rows,
+          menuIdDetails: menuInfo.rows,
+        };
+        return res.status(201).json({
+          status: 'successful',
+          message: 'Order Details',
+          order,
+        });
+      }
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 'operation not successful',
+        message: 'Sorry, something went wrong, in getting all orders try again!',
+      });
+    }
+
+    // console.log(getOrder);
+    // const orderMenu = await db.query(getMenuByOrderId(menuId));
+    // result.order = getOrder.rows[0];
+    // result.menu = orderMenu.rows;
+    // return res.status(200).json({
+    //   status: 'success',
+    //   message: 'order returned successfully',
+    //   data: result,
+
+    // });
   }
 
   static async updateOrder(req, res) {
