@@ -2,6 +2,9 @@
   "name": "firstforfood",
   "version": "1.0.0",
   "description": "Fast food ordering app",
+  "engines": {
+    "node": "8.11.3"
+  },
   "main": "Versioning.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development babel-node server.js",
@@ -14,6 +17,7 @@
     "migrate:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createTables.js",
     "drop:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/dropTables.js",
     "insert:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/seeding.js",
+    "migrate:admin": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createAdmin.js",
     "lint": " esw server.js Versioning.js api/* --color",
     "lint-watch": "npm run lint -- --watch",
     "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
@@ -29,6 +33,7 @@
     "@babel/traverse": "^7.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "cross-env": "^5.2.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-api-versioning": "^2.0.0",
@@ -40,7 +45,6 @@
     "chai": "^4.1.2",
     "chai-http": "^4.2.0",
     "coveralls": "^3.0.2",
-    "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",

@@ -14,7 +14,8 @@ INSERT INTO users
  RETURNING *
 `);
 
-export const findUser = userId => `SELECT * FROM users WHERE id = '${userId}'`;
+export const findUser = username => `SELECT * FROM users WHERE username = '${username}'`;
+export const findUserById = userId => `SELECT * FROM users WHERE id = '${userId}'`;
 
 export const checkUser = (username, email) => `
 SELECT * FROM users 
@@ -87,10 +88,16 @@ WHERE menus.id = ${menuId}`);
 */
 export const createOrder = requestBody => (`
 INSERT INTO orders 
-(qty, amount, userId, menuId)
+(qty,userId, menuId)
 VALUES
-('${requestBody.qty}', '${requestBody.amount}', ${requestBody.userId}, ${requestBody.menuId})
+('${requestBody.qty}', ${requestBody.userId}, ${requestBody.menuId})
 RETURNING *`);
+
+export const calculateAmount = menuId => (`
+SELECT price 
+FROM menus 
+where menus.id=${menuId}`
+);
 
 /**
  * @method getUserOrders
@@ -106,12 +113,27 @@ WHERE UserId = ${userId} ORDER BY id DESC
  * @description it returns all orders
  * @returns {Object} Object
 */
-export const getAllOrders = () => ('SELECT * from orders');
+export const AllOrders = () => ('SELECT * from orders');
 
 export const getUserOrder = userId => (`
 SELECT * from orders
 WHERE userIid = ${userId} ORDER BY id DESC
 `);
+
+export const getAllOrders = () => (`
+SELECT orders.id,
+  menus.foodName, 
+  menus.foodDescr, 
+  menus.price, 
+  orders.qty,
+  orders.amount,
+  users.phone,
+  users.address,
+  orders.status,
+  orders.createdAt
+FROM orders 
+INNER JOIN menus ON orders.menuId = menus.id 
+LEFT JOIN users on orders.userId = users.id order by id desc`);
 
 /**
  * @method findOrder
@@ -135,8 +157,7 @@ export const getMenuByOrderId = menuId => (
  * @description edit order status
  * @returns {Object} Object
 */
-export const updateOrder = (status, orderId) => (`
+export const updateOrder = status => (`
 UPDATE orders 
 SET status = '${status}'
-WHERE id = ${orderId}
 RETURNING *`);

@@ -6,7 +6,7 @@ import Menu from '../controllers/menuController';
 import verifyToken from '../middlewares/verifyToken';
 import verifyAdmin from '../middlewares/verifyAdmin';
 import MenuValidator from '../middlewares/menuValidator';
-// import orderValidator from '../middlewares/orderValidator';
+import orderValidator from '../middlewares/orderValidator';
 
 const router = express.Router();
 
@@ -16,8 +16,8 @@ router.post('/auth/signup', authValidation.signup, Auth.signUp);
 router.post('/auth/login', authValidation.login, Auth.login);
 
 router.get('/orders', verifyToken, verifyAdmin, Order.getAllOrder);
-router.get('/orders/:orderId', verifyToken, verifyAdmin, Order.getOneOrder);
-router.post('/orders', verifyToken, Order.createOrder);
+router.get('/orders/:orderId', verifyToken, verifyAdmin, orderValidator.validateId, Order.getOneOrder);
+router.post('/orders', verifyToken, orderValidator.validateInput, Order.createOrder);
 router.get('/users/:userId/orders', verifyToken, Order.userOrderHistory);
 router.put('/orders/:orderId', verifyToken, verifyAdmin, Order.updateOrder);
 router.delete('/orders/:orderId', verifyToken, Order.deleteOrder);

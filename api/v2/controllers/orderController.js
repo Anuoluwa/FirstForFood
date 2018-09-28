@@ -1,13 +1,13 @@
 import db from '../config/connection';
 import {
-  checkMenuName, createOrder, findUser, getUserOrders, getAllOrders, findOrder,
+  checkMenuName, createOrder, findUserById, getUserOrders, getAllOrders, findOrder,
   updateOrder,
 } from '../models/query';
 
 class OrderController {
   static async createOrder(req, res) {
     try {
-      const userId = req.userId.id;
+      const userId = req.user.id;
       const {
         qty, menuId,
       } = req.body;
@@ -16,9 +16,9 @@ class OrderController {
           message: 'OrderId must be a number',
         });
       }
-      const userDetails = await db.query(findUser(userId));
+      const userDetails = await db.query(findUserById(userId));
       const menuExists = await db.query(checkMenuName(menuId));
-      console.log(menuExists);
+
       if (menuExists.rowCount === 0) {
         return res.status(404).json({
           status: 'Not found',
@@ -29,20 +29,29 @@ class OrderController {
         qty, userId, menuId,
       };
       const newOrder = await db.query(createOrder(menu));
+      const total = parseInt((menuExists.rows[0].price), 10) * parseInt((newOrder.rows[0].qty), 10);
       if (newOrder.rowCount > 0) {
         const order = {
           id: newOrder.rows[0].id,
           quantity: newOrder.rows[0].qty,
-          amount: menuExists.price * qty,
+          amount: `${total} NGNnaira`,
           status: newOrder.rows[0].status,
-          userId,
-          menuId: newOrder.rows[0].menuId,
+        };
+        const customerDetails = {
+          name: userDetails.rows[0].username,
+          phone: userDetails.rows[0].phone,
+          address: userDetails.rows[0].address,
+        };
+        const menuDetails = {
+          name: menuExists.rows[0].foodname,
+          phone: menuExists.rows[0].fooddescr,
+          address: menuExists.rows[0].price,
         };
         return res.status(201).json({
           status: 'success',
           message: 'Order have been taken!',
-          YourDetails: userDetails.rows,
-          menu: menuExists.rows,
+          YourDetails: customerDetails,
+          menuDetails,
           order,
         });
       }
@@ -59,11 +68,14 @@ class OrderController {
     try {
       const { userId } = req.params;
       const userOrders = await db.query(getUserOrders(userId));
+      console.log(userOrders);
+      const userInfo = await db.query(findUserById(userId));
       if (userOrders.rowCount > 0) {
         return res.status(200).json({
           status: 'operation successful',
           message: 'These are your order history',
           orders: userOrders.rows,
+          userDetails: userInfo.rows,
         });
       }
       return res.status(404).json({
@@ -81,17 +93,17 @@ class OrderController {
 
   static async getAllOrder(req, res) {
     try {
-      const getQuestions = await db.query(getAllOrders());
-      if (getQuestions.rowCount === 0) {
+      const getOrders = await db.query(getAllOrders());
+      if (getOrders.rowCount === 0) {
         return res.status(404).json({
-          status: 'operation not successful',
+          status: 'Not found',
           message: 'no order found',
         });
       }
       return res.status(200).json({
         status: 'operation successful',
         message: 'these are the current orders',
-        orders: getQuestions.rows,
+        order: getOrders.rows,
       });
     } catch (error) {
       console.log({ message: `${error}` });
@@ -106,31 +118,32 @@ class OrderController {
     try {
       const { orderId } = req.params;
       const getOrder = await db.query(findOrder(orderId));
-      console.log(getOrder.rows[0].menuid);
-      console.log(getOrder.rows[0].userid);
       if (getOrder.rowCount === 0) {
         return res.status(404).json({
           status: 'operation not successful',
           message: 'order does not exist',
         });
       }
-      const userId = getOrder.rows[0].userid;
-      const menuId = getOrder.rows[0].menuid;
-      const userInfo = await db.query(findUser(userId));
-      const menuInfo = await db.query(checkMenuName(menuId));
+
       if (getOrder.rowCount > 0) {
+        const userId = getOrder.rows[0].userid;
+        const menuId = getOrder.rows[0].menuid;
+        const userInfo = await db.query(findUserById(userId));
+        const menuInfo = await db.query(checkMenuName(menuId));
         const order = {
           id: getOrder.rows[0].id,
           quantity: getOrder.rows[0].qty,
           amount: getOrder.rows[0].qty,
           status: getOrder.rows[0].status,
-          userDetails: userInfo.rows,
-          menuIdDetails: menuInfo.rows,
+          userId: getOrder.rows[0].userid,
+          menuId: getOrder.rows[0].menuid,
         };
         return res.status(201).json({
           status: 'successful',
           message: 'Order Details',
           order,
+          userDetails: userInfo.rows,
+          menuIdDetails: menuInfo.rows,
         });
       }
     } catch (error) {
@@ -145,6 +158,7 @@ class OrderController {
   static async updateOrder(req, res) {
     try {
       const { orderId } = req.params;
+      // const { status } = req.body;
       const getOrder = await db.query(findOrder(orderId));
       if (getOrder.rowCount === 0) {
         return res.status(404).json({
@@ -154,10 +168,10 @@ class OrderController {
       }
       const userId = getOrder.rows[0].userid;
       const menuId = getOrder.rows[0].menuid;
-      const userInfo = await db.query(findUser(userId));
+      const userInfo = await db.query(findUserById(userId));
       const menuInfo = await db.query(checkMenuName(menuId));
-      const status = getOrder.rows[0].id;
-      const updatedOrder = await db.query(updateOrder(status, orderId));
+      // const status = getOrder.rows[0].status;
+      const updatedOrder = await db.query(updateOrder(getOrder.rows[0].status));
       console.log(menuInfo.rows);
       console.log(updatedOrder.rows);
 
