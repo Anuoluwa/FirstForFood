@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(255) NOT NULL,
     phone TEXT NOT NULL,
     address TEXT NOT NULL,
-    admin TEXT NOT NULL,
+    admin TEXT NOT NULL DEFAULT ('false'),
     createdAt TIMESTAMP Default Now()
 )`;
 
