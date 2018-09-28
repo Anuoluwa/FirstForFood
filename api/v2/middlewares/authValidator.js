@@ -23,12 +23,25 @@ export default class authValidator {
     const validUsername = /^[a-zA-Z\-]+$/.test(username);
     const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     const validPassword = /^[a-zA-Z0-9.\-$@*!]{6,12}$/g.test(password);
+    if (req.body === '') {
+      return res.status(400)
+        .json({ message: 'The request body should not be empty!' });
+    }
+
     if (!validUsername) {
       return res.status(400).json({ message: '"username" should not contain special characters, numbers and whitespace' });
     }
     if (typeof username === 'undefined' || typeof validUsername === 'undefined') {
       return res.status(400)
         .json({ message: '"username" field must not be undefined' });
+    }
+    if (typeof username !== 'string') {
+      return res.status(400)
+        .json({ message: '"username" input should be a string' });
+    }
+    if (username instanceof String) {
+      return res.status(400)
+        .json({ message: '"username" input should be a string' });
     }
     if (username.length === '') {
       return res.status(400)
@@ -82,16 +95,10 @@ export default class authValidator {
       return res.status(400)
         .json({ message: '"phone" field must not be empty' });
     }
-    if (phone.length < 11) {
+    if (phone.length !== 11) {
       return res.status(400)
         .json(
-          { message: '"phone" must be a string of numbers, with length between 11 and 22' },
-        );
-    }
-    if (phone.length > 11) {
-      return res.status(400)
-        .json(
-          { message: '"phone" must be a string of numbers, with length between 11 and 22' },
+          { message: '"phone" must be digits of 11 numbers' },
         );
     }
     if (!(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/.test(phone))) {
@@ -118,26 +125,6 @@ export default class authValidator {
       return res.status(400)
         .json({ message: '"address" must be have a valid characters' });
     }
-    if (typeof admin === 'undefined') {
-      return res.status(400)
-        .json({ message: '"admin" field must not be empty' });
-    }
-    if (admin.length === '') {
-      return res.status(400)
-        .json({ message: '"admin" field must not be empty' });
-    }
-    if (admin.length < 4) {
-      return res.status(400)
-        .json(
-          { message: '"admin" must be a string, with minimum length of 4' },
-        );
-    }
-    if (admin.length > 8) {
-      return res.status(400)
-        .json(
-          { message: '"admin" must be a string, with maximum length of 8' },
-        );
-    }
     next();
   }
 
@@ -148,9 +135,8 @@ export default class authValidator {
      * @return {res.status()} A response object and emit appropriate errors.
      */
   static login(req, res, next) {
-    const { username, email, password } = req.body;
+    const { username, password } = req.body;
     const validUsername = /^[a-zA-Z\-]+$/.test(username);
-    const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     const validPassword = /^[a-zA-Z0-9.\-$@*!]{6,12}$/g.test(password);
     if (!validUsername) {
       return res.status(400).json(
@@ -176,17 +162,6 @@ export default class authValidator {
       return res.status(400)
         .json({ message: '"username" must be a string with with minimum length of 6' });
     }
-    if (typeof email === 'undefined') {
-      return res.status(400)
-        .json({ message: '"email" field must not be undefined' });
-    }
-    if (email.length === '') {
-      return res.status(400)
-        .json({ message: '"email" must be not empty' });
-    }
-    if (!validEmail) {
-      return res.status(400).json({ message: '"email" please email must be valid!' });
-    }
     if (typeof password === 'undefined' || typeof validPassword === 'undefined') {
       return res.status(400)
         .json({ message: '"password" field must not be undefined' });
@@ -206,8 +181,6 @@ export default class authValidator {
     if (!validPassword) {
       return res.status(400).json({ message: '"password" must be a string of numbers' });
     }
-
-
-    return next();
+    next();
   }
 }

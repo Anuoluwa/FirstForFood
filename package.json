@@ -17,6 +17,7 @@
     "migrate:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createTables.js",
     "drop:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/dropTables.js",
     "insert:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/seeding.js",
+    "migrate:admin": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createAdmin.js",
     "lint": " esw server.js Versioning.js api/* --color",
     "lint-watch": "npm run lint -- --watch",
     "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
