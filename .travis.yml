@@ -9,9 +9,11 @@ global:
 notifications:
   email: 
     false
+services:
+  - postgresql
+  
 before_script:
-  - psql -c 'create user anuoluwa with password "anuoluwa";' -U postgres
-  - psql -c 'create database swiftfoodtest;' -U postgres
+  - psql -c 'create database travis_ci_food;' -U postgres
   - npm i -g npm@6.3.0
   - npm run migrate:test
     
