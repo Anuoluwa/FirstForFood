@@ -9,7 +9,7 @@ class OrderController {
     try {
       const userId = req.user.id;
       const {
-        qty, amount, menuId,
+        qty, menuId,
       } = req.body;
       if (Number.isNaN(userId) === true) {
         return res.status(400).json({
@@ -26,7 +26,7 @@ class OrderController {
         });
       }
       const menu = {
-        qty, amount, userId, menuId,
+        qty, userId, menuId,
       };
       const newOrder = await db.query(createOrder(menu));
       const total = parseInt((menuExists.rows[0].price), 10) * parseInt((newOrder.rows[0].qty), 10);
