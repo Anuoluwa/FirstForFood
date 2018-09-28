@@ -99,13 +99,13 @@ Project is currently being built with the Project Management Tool, Pivotal Track
 
 <tr><td>POST</td> <td>api/v2/orders</td> <td>Place order</td> <td>A user must login, to create order with these fields, quantity, price and amount</td></tr>
 
-<tr><td>GET</td> <td>api/v2//users/<userId>/orders</td> <td>Get user order history</td> <td>This accepts userID and is dmin protected route</td></tr>
+<tr><td>GET</td> <td>api/v2//users/userId/orders</td> <td>Get user order history</td> <td>This accepts userID and is dmin protected route</td></tr>
 
 <tr><td>GET</td> <td>api/v2/orders</td> <td>Get all orders available</td> <td>Admin protected routes, it returns orders</td></tr>
 
-<tr><td>GET</td> <td>api/v2/orders/<orderId></td> <td>Get a specific order</td> <td>Admin protected routes, returns an order given an ID</td></tr>
+<tr><td>GET</td> <td>api/v2/orders/orderId</td> <td>Get a specific order</td> <td>Admin protected routes, returns an order given an ID</td></tr>
 
-<tr><td>PUT</td> <td>api/v2/orders/<orderId></td> <td>Update a specific order</td> <td>Only for admin, returns an order given an ID</td></tr>
+<tr><td>PUT</td> <td>api/v2/orders/orderId</td> <td>Update a specific order</td> <td>Only for admin, returns an order given an ID</td></tr>
 
 </table>
 
