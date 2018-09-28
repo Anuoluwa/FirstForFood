@@ -4,7 +4,7 @@ import { createMenu, checkFoodName, getAllMenu } from '../models/query';
 class MenuController {
   static async createMenu(req, res) {
     try {
-      const userId = req.userId.id;
+      const userId = req.user.id;
       const {
         foodName, foodDescr, price,
       } = req.body;
