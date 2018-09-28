@@ -88,9 +88,9 @@ WHERE menus.id = ${menuId}`);
 */
 export const createOrder = requestBody => (`
 INSERT INTO orders 
-(qty, amount, userId, menuId)
+(qty,userId, menuId)
 VALUES
-('${requestBody.qty}', ${requestBody.amount}, ${requestBody.userId}, ${requestBody.menuId})
+('${requestBody.qty}', ${requestBody.userId}, ${requestBody.menuId})
 RETURNING *`);
 
 export const calculateAmount = menuId => (`
