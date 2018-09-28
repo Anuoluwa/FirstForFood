@@ -7,10 +7,10 @@
 */
 const verifyAdmin = async (req, res, next) => {
   try {
-    if (req.userId.admin === 'false') {
-      return res.status(403).json({ message: 'User is not authorized to access this endpoint' });
+    if (req.user.admin === 'false' || req.user.admin !== 'true') {
+      return res.status(403).json({ message: 'Unauthorized, ACESSS DENIED' });
     }
-    if (req.userId.admin === 'true') {
+    if (req.user.admin === 'true') {
       next();
     }
   } catch (error) {
