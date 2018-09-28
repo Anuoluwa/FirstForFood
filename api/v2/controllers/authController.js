@@ -58,11 +58,10 @@ export default class AuthController {
         email: createUser.rows[0].email,
         phone: createUser.rows[0].phone,
         address: createUser.rows[0].address,
-        admin: createUser.rows[0].admin,
       };
       return res.status(201).json({
         status: 'operation successful',
-        message: 'User created successfully',
+        message: 'Thank you!, your account was created succcessfully',
         data,
       });
     } catch (error) {
