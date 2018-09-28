@@ -7,20 +7,38 @@ class orderValidator {
     * @return {res.status()} A response object and emit appropriate errors.
     */
   static validateInput(req, res, next) {
-    const { qty } = req.body;
+    const { qty, menuId } = req.body;
     if (typeof qty === 'undefined') {
       return res.status(400).json({ message: '"qty" must be not undefined!' });
     }
     if (qty === ' ') {
       return res.status(400).json({ message: '"qty" must not be empty!' });
     }
-    if (qty.length < 1) {
+    if (qty.length > 6) {
       return res.status(400).json(
-        { message: '"qty" must be a string with minimum 20 characters' },
+        { message: '"qty" must be a string of minimum of 6 digits' },
       );
     }
-    if (qty.length > 7) {
-      return res.status(400).json({ message: '"qty" must be a string with maximum 7 characters' });
+    if (!(/^\d+$/.test(qty))) {
+      return res.status(400).json(
+        { message: '"qty" must be a string of minimum of 6 digits' },
+      );
+    }
+    if (typeof menuId === 'undefined') {
+      return res.status(400).json({ message: '"menuId" must not be undefined!' });
+    }
+    if (menuId === ' ') {
+      return res.status(400).json({ message: '"menuId" must not be empty!' });
+    }
+    if (menuId.length > 6) {
+      return res.status(400).json(
+        { message: '"menuId" must be a string of 7 digits' },
+      );
+    }
+    if (!(/^\d+$/.test(menuId))) {
+      return res.status(400).json(
+        { message: '"menuId" must be a string of numbers, no negative numbers' },
+      );
     }
     next();
   }
