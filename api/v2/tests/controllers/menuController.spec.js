@@ -5,7 +5,8 @@ import app from '../../../../server';
 const { expect } = chai;
 
 const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
-global.token = null;
+let adminToken;
+
 before((done) => {
   request(app)
     .post('/api/v2/auth/login')
@@ -14,7 +15,7 @@ before((done) => {
       password: 'testadmin',
     })
     .end((err, res) => {
-      global.token = res.body.data.token;
+      adminToken = res.body.data.token;
       done();
     });
 });
@@ -84,7 +85,7 @@ describe('Test suite for menu controller', () => {
     it('should return success for new order', (done) => {
       request(app)
         .post('/api/v2/menu')
-        .set({ Authorization: `token ${global.token}` })
+        .set({ Authorization: `token ${adminToken}` })
         .send({
           foodName: 'Peppepr soup Chicken',
           foodDescr: 'Nigerian dishes',

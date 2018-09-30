@@ -73,7 +73,7 @@ class OrderController {
       if (userOrders.rowCount > 0) {
         return res.status(200).json({
           status: 'operation successful',
-          message: 'These are your order history',
+          message: 'this is your order history',
           orders: userOrders.rows,
           userDetails: userInfo.rows,
         });
@@ -138,9 +138,9 @@ class OrderController {
           userId: getOrder.rows[0].userid,
           menuId: getOrder.rows[0].menuid,
         };
-        return res.status(201).json({
+        return res.status(200).json({
           status: 'successful',
-          message: 'Order Details',
+          message: 'order details',
           order,
           userDetails: userInfo.rows,
           menuIdDetails: menuInfo.rows,

@@ -47,7 +47,7 @@ class orderValidator {
     const { orderId } = req.params;
     if (!Number(orderId)) {
       return res.status(400).json({
-        message: 'UserId must be a number',
+        message: 'Id must be a number',
       });
     }
     next();
