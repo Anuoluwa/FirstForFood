@@ -115,7 +115,7 @@ export default class AuthController {
       };
       return res.status(200).json({
         status: 'operation successful',
-        message: 'login successful',
+        message: 'you are welcome, login successful',
         data,
       });
     } catch (error) {
