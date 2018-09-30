@@ -7,19 +7,19 @@ const { expect } = chai;
 const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
 let adminToken;
 
-before((done) => {
-  request(app)
-    .post('/api/v2/auth/login')
-    .send({
-      username: 'testadmin',
-      password: 'testadmin',
-    })
-    .end((err, res) => {
-      adminToken = res.body.data.token;
-      done();
-    });
-});
 describe('Test suite for menu controller', () => {
+  before((done) => {
+    request(app)
+      .post('/api/v2/auth/login')
+      .send({
+        username: 'testadmin',
+        password: 'testadmin',
+      })
+      .end((err, res) => {
+        adminToken = res.body.data.token;
+        done();
+      });
+  });
   describe(' POST /api/v2/menu', () => {
     it('should return error for undefined header and token', (done) => {
       request(app)

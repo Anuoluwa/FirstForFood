@@ -6,24 +6,26 @@ const { expect } = chai;
 
 const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
 let userToken;
+let adminToken;
+let usersToken;
 
-before((done) => {
-  request(app)
-    .post('/api/v2/auth/signup')
-    .send({
-      username: 'johnpeter',
-      email: 'johnpeter@gmail.com',
-      password: 'johnjane',
-      phone: '07012345678',
-      address: 'qwert asdf',
-    })
-    .end((err, res) => {
-      userToken = res.body.data.token;
-      done();
-    });
-});
 describe('Test suite for orders controller', () => {
   describe(' POST /api/v2/orders', () => {
+    before((done) => {
+      request(app)
+        .post('/api/v2/auth/signup')
+        .send({
+          username: 'johnpeter',
+          email: 'johnpeter@gmail.com',
+          password: 'johnjane',
+          phone: '07012345678',
+          address: 'qwert asdf',
+        })
+        .end((err, res) => {
+          userToken = res.body.data.token;
+          done();
+        });
+    });
     it('should return error for undefined header and token', (done) => {
       request(app)
         .post('/api/v2/orders')
@@ -141,21 +143,20 @@ describe('Test suite for orders controller', () => {
     });
   });
 
-  let adminToken;
 
-  before((done) => {
-    request(app)
-      .post('/api/v2/auth/login')
-      .send({
-        username: 'testadmin',
-        password: 'testadmin',
-      })
-      .end((err, res) => {
-        adminToken = res.body.data.token;
-        done();
-      });
-  });
   describe('GET /orders, for all orders in the endpoint', () => {
+    before((done) => {
+      request(app)
+        .post('/api/v2/auth/login')
+        .send({
+          username: 'testadmin',
+          password: 'testadmin',
+        })
+        .end((err, res) => {
+          adminToken = res.body.data.token;
+          done();
+        });
+    });
     it('should return reject fake token', (done) => {
       request(app)
         .get('/api/v2/orders')
@@ -285,25 +286,22 @@ describe('Test suite for orders controller', () => {
     });
   });
 
-  let usersToken;
-
-  before((done) => {
-    request(app)
-      .post('/api/v2/auth/signup')
-      .send({
-        username: 'johnpeters',
-        email: 'johnpeters@gmail.com',
-        password: 'johnjanes',
-        phone: '07012345678',
-        address: 'qwert asdf',
-      })
-      .end((err, res) => {
-        userToken = res.body.data.token;
-        done();
-      });
-  });
-
   describe('GET /users/<userId>/orders get history of a particular user', () => {
+    before((done) => {
+      request(app)
+        .post('/api/v2/auth/signup')
+        .send({
+          username: 'johnpeters',
+          email: 'johnpeters@gmail.com',
+          password: 'johnjanes',
+          phone: '07012345678',
+          address: 'qwert asdf',
+        })
+        .end((err, res) => {
+          userToken = res.body.data.token;
+          done();
+        });
+    });
     it('should return reject fake token', (done) => {
       request(app)
         .get('/api/v2/users/2/orders')
@@ -312,6 +310,17 @@ describe('Test suite for orders controller', () => {
           expect(res.status).to.deep.equals(401);
           expect(res.body.auth).to.equal('unauthorized');
           expect(res.body.message).to.equal('Failed to authenticate token');
+          done();
+        });
+    });
+    it('should return order succcess without null', (done) => {
+      request(app)
+        .get('api/v2/users/2/orders')
+        .set({ Authorization: `token ${usersToken}` })
+        .expect(200)
+        .end((err, res) => {
+          expect(res.status).to.not.equal(null);
+          expect(res.body.message).to.not.equal(null);
           done();
         });
     });
