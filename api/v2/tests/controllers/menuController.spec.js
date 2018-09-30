@@ -5,7 +5,7 @@ import app from '../../../../server';
 const { expect } = chai;
 
 const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
-
+global.token = null;
 before((done) => {
   request(app)
     .post('/api/v2/auth/login')
