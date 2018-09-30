@@ -12,12 +12,13 @@
     "migrate:test": "cross-env NODE_ENV=test babel-node ./api/v2/migration/createTables.js",
     "drop:test": "cross-env NODE_ENV=test babel-node ./api/v2/migration/dropTables.js",
     "insert:test": "cross-env NODE_ENV=test babel-node ./api/v2/migration/seeding.js",
-    "migrate:prod": "cross-env NODE_ENV=production babel-node ./api/v2/migration/createTables.js",
-    "drop:prod": "cross-env NODE_ENV=production babel-node ./api/v2/migration/dropTables.js",
     "migrate:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createTables.js",
     "drop:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/dropTables.js",
     "insert:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/seeding.js",
-    "migrate:admin": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createAdmin.js",
+    "seeder:admin": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createAdmin.js",
+    "seeder:testadmin": "cross-env NODE_ENV=test babel-node ./api/v2/migration/createTestAdmin.js",
+    "migrations": "npm run drop:test && npm run migrate:test",
+    "tests": "npm run migrations && npm run seeder:testadmin && npm run test",
     "lint": " esw server.js Versioning.js api/* --color",
     "lint-watch": "npm run lint -- --watch",
     "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
@@ -56,6 +57,14 @@
     "nyc": "^13.0.1",
     "superagent": "^4.0.0-beta.5",
     "supertest": "^3.3.0"
+  },
+  "nyc": {
+    "exclude": [
+      "UI",
+      "api/v2/test/**/*.spec.js",
+      "api/v2/config/*",
+      "server/config/config.js"
+    ]
   },
   "repository": {
     "type": "git",
