@@ -18,7 +18,7 @@ router.post('/auth/login', authValidation.login, Auth.login);
 router.get('/orders', verifyToken, verifyAdmin, Order.getAllOrder);
 router.get('/orders/:orderId', verifyToken, verifyAdmin, orderValidator.validateId, Order.getOneOrder);
 router.post('/orders', verifyToken, orderValidator.validateInput, Order.createOrder);
-router.get('/users/:userId/orders', verifyToken, Order.userOrderHistory);
+router.get('/users/:userId/orders', verifyToken, orderValidator.validateInput, Order.userOrderHistory);
 router.put('/orders/:orderId', verifyToken, verifyAdmin, Order.updateOrder);
 router.delete('/orders/:orderId', verifyToken, Order.deleteOrder);
 

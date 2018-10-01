@@ -9,7 +9,7 @@ class orderValidator {
   static validateInput(req, res, next) {
     const { qty, menuId } = req.body;
     if (typeof qty === 'undefined') {
-      return res.status(400).json({ message: '"qty" must be not undefined!' });
+      return res.status(400).json({ message: '"qty" must not be undefined!' });
     }
     if (qty === ' ') {
       return res.status(400).json({ message: '"qty" must not be empty!' });
@@ -47,7 +47,7 @@ class orderValidator {
     const { orderId } = req.params;
     if (!Number(orderId)) {
       return res.status(400).json({
-        message: 'UserId must be a number',
+        message: 'Id must be a number',
       });
     }
     next();

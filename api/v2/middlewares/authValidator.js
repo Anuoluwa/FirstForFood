@@ -18,7 +18,7 @@ export default class authValidator {
 
   static signup(req, res, next) {
     const {
-      username, email, password, phone, address, admin,
+      username, email, password, phone, address,
     } = req.body;
     const validUsername = /^[a-zA-Z\-]+$/.test(username);
     const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
@@ -141,8 +141,7 @@ export default class authValidator {
     if (!validUsername) {
       return res.status(400).json(
         {
-          message: `"username" should not contain special characters,
-          numbers and whitespace`,
+          message: '"username" should not contain special characters, numbers and whitespace',
         },
       );
     }
