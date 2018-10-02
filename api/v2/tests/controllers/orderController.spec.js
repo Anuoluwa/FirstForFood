@@ -25,6 +25,18 @@ describe('Test suite for orders controller', () => {
           done();
         });
     });
+    before((done) => {
+      request(app)
+        .post('/api/v2/auth/login')
+        .send({
+          username: 'johnpet',
+          password: 'johnpet',
+        })
+        .end((err, res) => {
+          userToken = res.body.data.token;
+          done();
+        });
+    });
     it('should return error for undefined header and token', (done) => {
       request(app)
         .post('/api/v2/orders')
@@ -249,31 +261,31 @@ describe('Test suite for orders controller', () => {
           done();
         });
     });
-    // it('should return all orders with success message', (done) => {
-    //   request(app)
-    //     .get('/api/v2/orders/1')
-    //     .set({ Authorization: `token ${adminToken}` })
-    //     .end((err, res) => {
-    //       expect(res.status).to.eql(200);
-    //       expect(res.body.status).to.equal('successful');
-    //       expect(res.body.message).to.equal('order details');
-    //       done();
-    //     });
-    // });
-    // it('should return one specific orders', (done) => {
-    //   request(app)
-    //     .get('/api/v2/orders/1')
-    //     .set({ Authorization: `token ${adminToken}` })
-    //     .end((err, res) => {
-    //       expect(res.status).to.eql(200);
-    //       expect(res.body).to.have.a.property('status');
-    //       expect(res.body).to.have.a.property('message');
-    //       expect(res.body).to.have.a.property('order');
-    //       expect(res.body).to.have.a.property('userDetails');
-    //       expect(res.body).to.have.a.property('menuIdDetails');
-    //       done();
-    //     });
-    // });
+    it('should return all orders with success message', (done) => {
+      request(app)
+        .get('/api/v2/orders/1')
+        .set({ Authorization: `token ${adminToken}` })
+        .end((err, res) => {
+          expect(res.status).to.eql(200);
+          expect(res.body.status).to.equal('successful');
+          expect(res.body.message).to.equal('order details');
+          done();
+        });
+    });
+    it('should return one specific orders', (done) => {
+      request(app)
+        .get('/api/v2/orders/1')
+        .set({ Authorization: `token ${adminToken}` })
+        .end((err, res) => {
+          expect(res.status).to.eql(200);
+          expect(res.body).to.have.a.property('status');
+          expect(res.body).to.have.a.property('message');
+          expect(res.body).to.have.a.property('order');
+          expect(res.body).to.have.a.property('userDetails');
+          expect(res.body).to.have.a.property('menuIdDetails');
+          done();
+        });
+    });
     it('should return order succcess without null', (done) => {
       request(app)
         .get('/api/v2/orders/1')
@@ -285,16 +297,6 @@ describe('Test suite for orders controller', () => {
           done();
         });
     });
-    // it('should return error wrong order id', (done) => {
-    //   request(app)
-    //     .get('/api/v2/orders/qwe')
-    //     .set({ Authorization: `token ${adminToken}` })
-    //     .end((err, res) => {
-    //       expect(res.status).to.eql(40);
-    //       expect(res.body.message).to.equal('Id must be a number');
-    //       done();
-    //     });
-    // });
   });
 
   describe('GET /users/<userId>/orders get history of a particular user', () => {
