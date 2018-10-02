@@ -5,42 +5,54 @@ import app from '../../../../server';
 const { expect } = chai;
 
 const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
-let userToken;
+// let userToken;
 let adminToken;
 
+beforeEach((done) => {
+  request(app)
+    .post('/api/v2/auth/login')
+    .send({
+      username: 'testadmin',
+      password: 'testadmin',
+    })
+    .end((err, res) => {
+      adminToken = res.body.data.token;
+      done();
+    });
+});
 describe('Test suite for orders controller', () => {
   describe(' POST /api/v2/orders', () => {
-    before((done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .send({
-          username: 'johnpet',
-          email: 'johnpet@gmail.com',
-          password: 'johnpet',
-          phone: '07012345678',
-          address: 'qwert asdf',
-        })
-        .end((err, res) => {
-          userToken = res.body.data.token;
-          done();
-        });
-    });
-    beforeEach((done) => {
-      request(app)
-        .post('/api/v2/auth/login')
-        .send({
-          username: 'johnpet',
-          password: 'johnpet',
-        })
-        .end((err, res) => {
-          userToken = res.body.data.token;
-          done();
-        });
-    });
+    // before((done) => {
+    //   request(app)
+    //     .post('/api/v2/auth/signup')
+    //     .send({
+    //       username: 'johnpet',
+    //       email: 'johnpet@gmail.com',
+    //       password: 'johnpet',
+    //       phone: '07012345678',
+    //       address: 'qwert asdf',
+    //     })
+    //     .end((err, res) => {
+    //       userToken = res.body.data.token;
+    //       done();
+    //     });
+    // });
+    // beforeEach((done) => {
+    //   request(app)
+    //     .post('/api/v2/auth/login')
+    //     .send({
+    //       username: 'johnpet',
+    //       password: 'johnpet',
+    //     })
+    //     .end((err, res) => {
+    //       userToken = res.body.data.token;
+    //       done();
+    //     });
+    // });
     it('should return error for undefined input for new user', (done) => {
       request(app)
         .post('/api/v2/orders')
-        .set({ Authorization: `token ${userToken}` })
+        .set({ Authorization: `token ${adminToken}` })
         .send({
           qty: undefined,
           menuId: '1',
@@ -54,7 +66,7 @@ describe('Test suite for orders controller', () => {
     it('should return error for undefined input for new order', (done) => {
       request(app)
         .post('/api/v2/orders')
-        .set({ Authorization: `token ${userToken}` })
+        .set({ Authorization: `token ${adminToken}` })
         .send({
           qty: '12',
           menuId: undefined,
@@ -68,7 +80,7 @@ describe('Test suite for orders controller', () => {
     it('should return error for undefined input for new order', (done) => {
       request(app)
         .post('/api/v2/orders')
-        .set({ Authorization: `token ${userToken}` })
+        .set({ Authorization: `token ${adminToken}` })
         .send({
           qty: '',
           menuId: '1',
@@ -82,7 +94,7 @@ describe('Test suite for orders controller', () => {
     it('should return error for undefined input for new order', (done) => {
       request(app)
         .post('/api/v2/orders')
-        .set({ Authorization: `token ${userToken}` })
+        .set({ Authorization: `token ${adminToken}` })
         .send({
           qty: '123',
           menuId: '',
@@ -96,7 +108,7 @@ describe('Test suite for orders controller', () => {
     it('should return succcess status code when a orders is created', (done) => {
       request(app)
         .post('/api/v2/orders/')
-        .set({ Authorization: `token ${userToken}` })
+        .set({ Authorization: `token ${adminToken}` })
         .send({
           qty: '23',
           menuId: '1',
@@ -156,18 +168,6 @@ describe('Test suite for orders controller', () => {
 
 
   describe('GET /orders, for all orders in the endpoint', () => {
-    beforeEach((done) => {
-      request(app)
-        .post('/api/v2/auth/login')
-        .send({
-          username: 'testadmin',
-          password: 'testadmin',
-        })
-        .end((err, res) => {
-          adminToken = res.body.data.token;
-          done();
-        });
-    });
     it('should return reject fake token', (done) => {
       request(app)
         .get('/api/v2/orders')
@@ -300,21 +300,21 @@ describe('Test suite for orders controller', () => {
   });
 
   describe('GET /users/<userId>/orders get history of a particular user', () => {
-    beforeEach((done) => {
-      request(app)
-        .post('/api/v2/auth/signup')
-        .send({
-          username: 'johnpeters',
-          email: 'johnpeters@gmail.com',
-          password: 'johnjanes',
-          phone: '07012345678',
-          address: 'qwert asdf',
-        })
-        .end((err, res) => {
-          userToken = res.body.data.token;
-          done();
-        });
-    });
+    // beforeEach((done) => {
+    //   request(app)
+    //     .post('/api/v2/auth/signup')
+    //     .send({
+    //       username: 'johnpeters',
+    //       email: 'johnpeters@gmail.com',
+    //       password: 'johnjanes',
+    //       phone: '07012345678',
+    //       address: 'qwert asdf',
+    //     })
+    //     .end((err, res) => {
+    //       adminToken = res.body.data.token;
+    //       done();
+    //     });
+    // });
     it('should return reject fake token', (done) => {
       request(app)
         .get('/api/v2/users/2/orders')

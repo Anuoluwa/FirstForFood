@@ -15,7 +15,7 @@ services:
 before_script:
   - psql -c 'create database travis_ci_food;' -U postgres
   - npm i -g npm@6.3.0
-  - npm run migrate:test
+  - npm run tests
     
 after_script:
   - npm install -g codeclimate-test-reporter
