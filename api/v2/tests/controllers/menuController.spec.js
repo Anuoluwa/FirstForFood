@@ -8,8 +8,8 @@ const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
 let adminToken;
 
 describe('Test suite for menu controller', () => {
-  describe(' POST /api/v2/menu', () => {
-    before((done) => {
+  describe('', () => {
+    it('', (done) => {
       request(app)
         .post('/api/v2/auth/login')
         .send({
@@ -21,38 +21,8 @@ describe('Test suite for menu controller', () => {
           done();
         });
     });
-    it('should return reject fake token', (done) => {
-      request(app)
-        .post('/api/v2/menu')
-        .set({ Authorization: `token ${faketoken}` })
-        .send({
-          foodName: 'Fried rice and chicken',
-          foodDescr: 'Nigerian fried with African taste',
-          price: '$456',
-        })
-        .end((err, res) => {
-          expect(res.status).to.eql(401);
-          expect(res.body.auth).to.equal('unauthorized');
-          expect(res.body.message).to.equal('Failed to authenticate token');
-          done();
-        });
-    });
-    it('should return success for new order', (done) => {
-      request(app)
-        .post('/api/v2/menu')
-        .set({ Authorization: `token ${adminToken}` })
-        .send({
-          foodName: 'Peppepr soup Chicken',
-          foodDescr: 'Nigerian dishes',
-          price: '456',
-        })
-        .end((err, res) => {
-          expect(res.status).to.eql(201);
-          expect(res.body.status).to.equal('operation successful');
-          expect(res.body.message).to.equal('Menu created successfully');
-          done();
-        });
-    });
+  });
+  describe(' POST /api/v2/menu', () => {
     it('should return error for undefined header and token', (done) => {
       request(app)
         .post('/api/v2/menu')
@@ -82,6 +52,22 @@ describe('Test suite for menu controller', () => {
           done();
         });
     });
+    it('should return reject fake token', (done) => {
+      request(app)
+        .post('/api/v2/menu')
+        .set({ Authorization: `token ${faketoken}` })
+        .send({
+          foodName: 'Fried rice and chicken',
+          foodDescr: 'Nigerian fried with African taste',
+          price: '$456',
+        })
+        .end((err, res) => {
+          expect(res.status).to.eql(401);
+          expect(res.body.auth).to.equal('unauthorized');
+          expect(res.body.message).to.equal('Failed to authenticate token');
+          done();
+        });
+    });
     it('should return error for empty token', (done) => {
       request(app)
         .post('/api/v2/menu')
@@ -95,6 +81,22 @@ describe('Test suite for menu controller', () => {
           expect(res.status).to.eql(400);
           expect(res.body.status).to.equal('operation not successful');
           expect(res.body.message).to.equal('Headers key: "Authorization" and "token XXXXXXXXX" should not be empty');
+          done();
+        });
+    });
+    it('should return success for new order', (done) => {
+      request(app)
+        .post('/api/v2/menu')
+        .set({ Authorization: `token ${adminToken}` })
+        .send({
+          foodName: 'Peppepr soup Chicken',
+          foodDescr: 'Nigerian dishes',
+          price: '456',
+        })
+        .end((err, res) => {
+          expect(res.status).to.eql(201);
+          expect(res.body.status).to.equal('operation successful');
+          expect(res.body.message).to.equal('Menu created successfully');
           done();
         });
     });
