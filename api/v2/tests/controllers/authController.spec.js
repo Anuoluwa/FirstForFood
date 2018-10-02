@@ -65,9 +65,9 @@ describe('Test suite for authentication controller', () => {
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
         .send({
-          username: 'johnjane',
-          email: 'johnjane@gmail.com',
-          password: 'johnjane',
+          username: 'johndoe',
+          email: 'johndoe@gmail.com',
+          password: 'johndoe',
           phone: '07012345678',
           address: 'qwert asdf',
         })
@@ -88,9 +88,9 @@ describe('Test suite for authentication controller', () => {
         .post('/api/v2/auth/signup')
         .set('Accept', 'application/json')
         .send({
-          username: 'johnjane',
-          email: 'johnjane@gmail.com',
-          password: 'johnjane',
+          username: 'janejane',
+          email: 'janejane@gmail.com',
+          password: 'janejane',
           phone: '07012345678',
           address: 'qwert asdf',
         })
@@ -165,9 +165,9 @@ describe('/POST auth/login test suite', () => {
       .post('/api/v2/auth/signup')
       .set('Accept', 'application/json')
       .send({
-        username: 'johnlucas',
-        email: 'johnkucas@gmail.com',
-        password: 'johnlucas',
+        username: 'lucaslucas',
+        email: 'lucaslucas@gmail.com',
+        password: 'lucaslucas',
         phone: '07012345678',
         address: 'qwert asdf',
       })
@@ -188,8 +188,8 @@ describe('/POST auth/login test suite', () => {
       .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
       .send({
-        username: 'johnfoe',
-        password: 'johnfoe',
+        username: 'doefoe',
+        password: 'doefoe',
       })
       .expect(404)
       .end((err, res) => {
@@ -206,8 +206,8 @@ describe('/POST auth/login test suite', () => {
       .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
       .send({
-        username: 'johnlucas',
-        password: 'johnlucas',
+        username: 'johnjohn',
+        password: 'johnjohn',
       })
       .expect(200)
       .end((err, res) => {
@@ -224,8 +224,8 @@ describe('/POST auth/login test suite', () => {
       .post('/api/v2/auth/login')
       .set('Accept', 'application/json')
       .send({
-        username: 'johnlucas',
-        password: 'johnluc',
+        username: 'johnlucass',
+        password: 'johnlucass',
       })
       .end((err, res) => {
         expect(res.status).to.eql(400);
