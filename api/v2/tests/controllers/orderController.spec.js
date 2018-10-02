@@ -25,7 +25,7 @@ describe('Test suite for orders controller', () => {
           done();
         });
     });
-    before((done) => {
+    beforeEach((done) => {
       request(app)
         .post('/api/v2/auth/login')
         .send({
@@ -34,49 +34,6 @@ describe('Test suite for orders controller', () => {
         })
         .end((err, res) => {
           userToken = res.body.data.token;
-          done();
-        });
-    });
-    it('should return error for undefined header and token', (done) => {
-      request(app)
-        .post('/api/v2/orders')
-        .send({
-          qty: '12',
-          menuId: '1',
-        })
-        .end((err, res) => {
-          expect(res.status).to.eql(400);
-          expect(res.body.message).to.equal('Headers key: "Authorization" and "token XXXXXXXXX" should be valid');
-          done();
-        });
-    });
-    it('should return reject fake token', (done) => {
-      request(app)
-        .post('/api/v2/orders')
-        .set({ Authorization: `token ${faketoken}` })
-        .send({
-          qty: '12',
-          menuId: '1',
-        })
-        .end((err, res) => {
-          expect(res.status).to.eql(401);
-          expect(res.body.auth).to.equal('unauthorized');
-          expect(res.body.message).to.equal('Failed to authenticate token');
-          done();
-        });
-    });
-    it('should return error for empty token', (done) => {
-      request(app)
-        .post('/api/v2/orders')
-        .set({ Authorization: '' })
-        .send({
-          qty: '10',
-          menuId: '1',
-        })
-        .end((err, res) => {
-          expect(res.status).to.eql(400);
-          expect(res.body.status).to.equal('operation not successful');
-          expect(res.body.message).to.equal('Headers key: "Authorization" and "token XXXXXXXXX" should not be empty');
           done();
         });
     });
@@ -149,6 +106,49 @@ describe('Test suite for orders controller', () => {
           expect(res.body.status).to.equal('success');
           expect(res.body.message).to.equal('Order have been taken!');
           expect(res.err).to.be.not.eql(null);
+          done();
+        });
+    });
+    it('should return error for undefined header and token', (done) => {
+      request(app)
+        .post('/api/v2/orders')
+        .send({
+          qty: '12',
+          menuId: '1',
+        })
+        .end((err, res) => {
+          expect(res.status).to.eql(400);
+          expect(res.body.message).to.equal('Headers key: "Authorization" and "token XXXXXXXXX" should be valid');
+          done();
+        });
+    });
+    it('should return reject fake token', (done) => {
+      request(app)
+        .post('/api/v2/orders')
+        .set({ Authorization: `token ${faketoken}` })
+        .send({
+          qty: '12',
+          menuId: '1',
+        })
+        .end((err, res) => {
+          expect(res.status).to.eql(401);
+          expect(res.body.auth).to.equal('unauthorized');
+          expect(res.body.message).to.equal('Failed to authenticate token');
+          done();
+        });
+    });
+    it('should return error for empty token', (done) => {
+      request(app)
+        .post('/api/v2/orders')
+        .set({ Authorization: '' })
+        .send({
+          qty: '10',
+          menuId: '1',
+        })
+        .end((err, res) => {
+          expect(res.status).to.eql(400);
+          expect(res.body.status).to.equal('operation not successful');
+          expect(res.body.message).to.equal('Headers key: "Authorization" and "token XXXXXXXXX" should not be empty');
           done();
         });
     });
