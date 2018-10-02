@@ -1,7 +1,23 @@
 import db from '../config/connection';
 import { createMenu, checkFoodName, getAllMenu } from '../models/query';
 
+/**
+ * Creates a new MenuController.
+ * @class
+ * @classdesc enuController has two static methods: CreateMenu and getAllMenu.
+ */
 class MenuController {
+  /**
+ * @method createMenu
+ * @static
+ * @description this takes of POST menu method
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 409 if you already created a food with the same name
+ * @returns {Object} status 200 Menu created successfully
+ * @returns {Object} status 500 for server error
+ */
   static async createMenu(req, res) {
     try {
       const userId = req.user.id;
@@ -35,6 +51,17 @@ class MenuController {
     }
   }
 
+  /**
+ * @method getAllMenu
+ * @static
+ * @description this takes of POST menu method
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 200 if menu is empty, Sorry no menu at the moment
+ * @returns {Object} status 200 these are the available menu in our restaurant
+ * @returns {Object} status 500 Sorry, something went wrong in getting all menu!
+ */
   static async getAllMenu(req, res) {
     try {
       const getMenu = await db.query(getAllMenu());
