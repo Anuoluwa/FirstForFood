@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import routes from './routes/index';
-import swaggerDocument from '../swagger.yaml'
+import swaggerDocument from '../../swagger.json';
 
 export default (app) => {
   app.use(morgan('combined'));
