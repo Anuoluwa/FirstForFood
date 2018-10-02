@@ -8,7 +8,7 @@
   "main": "Versioning.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development babel-node server.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register --timeout 10000 \" api/v2/tests/*/*.spec.js\" --exit ",
+    "test": "npm run migrations && npm run seeder:testadmin && cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register --timeout 10000 \" api/v2/tests/*/*.spec.js\" --exit ",
     "migrate:test": "cross-env NODE_ENV=test babel-node ./api/v2/migration/createTables.js",
     "drop:test": "cross-env NODE_ENV=test babel-node ./api/v2/migration/dropTables.js",
     "insert:test": "cross-env NODE_ENV=test babel-node ./api/v2/migration/seeding.js",

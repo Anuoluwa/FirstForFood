@@ -8,8 +8,8 @@ const faketoken = 'qwertyuioplkjjdhdhhdhdhhd';
 let adminToken;
 
 describe('Test suite for menu controller', () => {
-  describe('', () => {
-    it('', (done) => {
+  describe(' POST /api/v2/menu', () => {
+    before((done) => {
       request(app)
         .post('/api/v2/auth/login')
         .send({
@@ -21,8 +21,7 @@ describe('Test suite for menu controller', () => {
           done();
         });
     });
-  });
-  describe(' POST /api/v2/menu', () => {
+
     it('should return error for undefined header and token', (done) => {
       request(app)
         .post('/api/v2/menu')
