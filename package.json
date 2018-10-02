@@ -17,6 +17,7 @@
     "insert:dev": "cross-env NODE_ENV=development babel-node ./api/v2/migration/seeding.js",
     "seeder:admin": "cross-env NODE_ENV=development babel-node ./api/v2/migration/createAdmin.js",
     "seeder:testadmin": "cross-env NODE_ENV=test babel-node ./api/v2/migration/createTestAdmin.js",
+    "seederUser": "cross-env NODE_ENV=test babel-node ./api/v2/migration/userSeed.js",
     "migrations": "npm run drop:test && npm run migrate:test",
     "tests": "npm run migrations && npm run seeder:testadmin && npm run test",
     "lint": " esw server.js Versioning.js api/* --color",
@@ -40,7 +41,8 @@
     "express-api-versioning": "^2.0.0",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.1",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "swagger-ui-express": "^4.0.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
