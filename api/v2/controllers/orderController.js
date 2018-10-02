@@ -4,7 +4,25 @@ import {
   updateOrder,
 } from '../models/query';
 
+/**
+ * Creates a new Ordercontroller.
+ * @class
+ * @classdesc Ordercontroller has two static methods: createOrder, getAllOrder. userOrerHistory
+ * getAllOrder, getOneOrder, updateOrder
+ */
 class OrderController {
+  /**
+ * @method createOrder
+ * @static
+ * @description this takes of POST order method
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 400 OrderId must be a number
+ * @returns {Object} status 404 food item does not exists
+ * @returns {Object} status 200 Order have been taken!
+ * @returns {Object} status 500 for server error
+ */
   static async createOrder(req, res) {
     try {
       const userId = req.user.id;
@@ -64,6 +82,17 @@ class OrderController {
     }
   }
 
+  /**
+ * @method userOrderHistory
+ * @static
+ * @description this takes of GET order history of a particular user
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 404 operation not successful
+ * @returns {Object} status 200 this is your order history
+ * @returns {Object} status 500 for server error
+ */
   static async userOrderHistory(req, res) {
     try {
       const { userId } = req.params;
@@ -91,6 +120,17 @@ class OrderController {
     }
   }
 
+  /**
+ * @method getAllOrder
+ * @static
+ * @description this takes of GET all order
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 404 food no order found
+ * @returns {Object} status 200 these are the current orders
+ * @returns {Object} status 500 for server error
+ */
   static async getAllOrder(req, res) {
     try {
       const getOrders = await db.query(getAllOrders());
@@ -114,6 +154,17 @@ class OrderController {
     }
   }
 
+  /**
+ * @method getOneOrder
+ * @static
+ * @description this takes of GET one specific order
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 404 order does not exist
+ * @returns {Object} status 200 order details
+ * @returns {Object} status 500 for server error
+ */
   static async getOneOrder(req, res) {
     try {
       const { orderId } = req.params;
@@ -155,6 +206,17 @@ class OrderController {
     }
   }
 
+  /**
+ * @method updateOrder
+ * @static
+ * @description this takes of PUT order
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 404 order does not exist
+ * @returns {Object} status 200 order details
+ * @returns {Object} status 500 for server error
+ */
   static async updateOrder(req, res) {
     try {
       const { orderId } = req.params;
