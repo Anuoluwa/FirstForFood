@@ -7,7 +7,7 @@ const address = document.querySelector('.address');
 
 const userSignUp = (e) => {
   e.preventDefault();
-  const apiUrl = 'http://localhost:4000/api/v2/auth/signup';
+  const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/signup';
   const payload = {
     username: username.value,
     email: email.value,

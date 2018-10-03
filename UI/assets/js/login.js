@@ -3,7 +3,7 @@ const name = document.querySelector('.username-login');
 const pass = document.querySelector('.password-login');
 const userLogin = (e) => {
   e.preventDefault();
-  const apiUrl = 'http://localhost:3000/api/v2/auth/login';
+  const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/login';
   const payload = {
     username: name.value,
     password: pass.value,

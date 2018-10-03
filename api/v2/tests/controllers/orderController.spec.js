@@ -152,7 +152,8 @@ describe('Test suite for orders controller', () => {
           password: 'testadmin',
         })
         .end((err, res) => {
-          adminToken = res.body.data.token;
+          const { token } = res.body;
+          adminToken = token;
           done();
         });
     });

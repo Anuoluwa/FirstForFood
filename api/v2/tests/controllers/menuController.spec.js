@@ -17,11 +17,11 @@ describe('Test suite for menu controller', () => {
           password: 'testadmin',
         })
         .end((err, res) => {
-          adminToken = res.body.data.token;
+          const { token } = res.body;
+          adminToken = token;
           done();
         });
     });
-
     it('should return error for undefined header and token', (done) => {
       request(app)
         .post('/api/v2/menu')
