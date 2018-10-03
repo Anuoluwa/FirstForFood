@@ -47,7 +47,10 @@ export default class AuthController {
       const token = jwt.sign(
         {
           id: createUser.rows[0].id,
+          username: createUser.rows[0].username,
           email: createUser.rows[0].email,
+          phone: createUser.rows[0].phone,
+          address: createUser.rows[0].address,
           admin: createUser.rows[0].admin,
         },
         process.env.SECRET_KEY, { expiresIn: 86400 },
@@ -108,14 +111,16 @@ export default class AuthController {
         process.env.SECRET_KEY, { expiresIn: 86400 },
       );
       const data = {
-        token,
         username: getUser.rows[0].username,
         email: getUser.rows[0].email,
+        phone: getUser.rows[0].phone,
+        address: getUser.rows[0].address,
         admin: getUser.rows[0].admin,
       };
       return res.status(200).json({
         status: 'operation successful',
         message: 'you are welcome, login successful',
+        token,
         data,
       });
     } catch (error) {
