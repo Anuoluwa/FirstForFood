@@ -1,10 +1,11 @@
 const signin = document.querySelector('#signinform');
 const name = document.querySelector('.username-login');
 const pass = document.querySelector('.password-login');
+const message = document.querySelector('#myMessage');
 
 const userLogin = (e) => {
   e.preventDefault();
-  const apiUrl = 'https://swiftfood.herokuapp.com/api/v2/auth/login';
+  const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/login';
   const payload = {
     username: name.value,
     password: pass.value,
@@ -20,6 +21,26 @@ const userLogin = (e) => {
   })
     .then(res => res.json())
     .then((data) => {
+      if (data.status === 'user details not found') {
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.color = 'red';
+        message.innerHTML = data.message;
+      }
+      if (data.status === 'operation not implemented') {
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.color = 'red';
+        message.innerHTML = data.message;
+      }
+      if (data.status === 'bad request') {
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.color = 'red';
+        message.innerHTML = data.message;
+      }
+      if (data.status === 'operation not successful' && data.status === 500) {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').style.display = 'block';
+        message.innerHTML = data.message;
+      }
       document.getElementById('loader').style.display = 'none';
       localStorage.setItem('Authorization', data.token);
 

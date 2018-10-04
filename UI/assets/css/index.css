@@ -998,3 +998,7 @@ footer ul li a {
 
     }
 }
+.error {
+  color: red;
+  font-weight: 400;
+}

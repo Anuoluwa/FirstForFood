@@ -2,17 +2,21 @@ const signup = document.querySelector('#signupform');
 const username = document.querySelector('.username');
 const email = document.querySelector('.email');
 const password = document.querySelector('.password');
-const confirm = document.querySelector('.confirm-password');
+const confirmPassword = document.querySelector('.confirm-password');
+const passwordError = document.querySelector('#confirm-pass');
 const phone = document.querySelector('.phone');
 const address = document.querySelector('.address');
+const message = document.querySelector('#myMessage');
 
-if (password !== confirm) {
-  document.getElementById('').style
-}
 
 const userSignUp = (e) => {
   e.preventDefault();
-  const apiUrl = 'http://localhost:4000/api/v2/auth/signup';
+  console.log(password);
+  if (String(password.value).trim() !== String(confirmPassword.value).trim()) {
+    passwordError.textContent = 'Your password does not mismatch';
+    return null;
+  }
+  const apiUrl = 'https://swiftfoodapp.herokuapp.com//api/v2/auth/signup';
   const payload = {
     username: username.value,
     email: email.value,
@@ -20,7 +24,6 @@ const userSignUp = (e) => {
     phone: phone.value,
     address: address.value,
   };
-  document.getElementById('loader').style.display = 'block';
   fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -31,7 +34,27 @@ const userSignUp = (e) => {
   })
     .then(res => res.json())
     .then((data) => {
-      document.getElementById('loader').style.display = 'none';
+      if (data.status === 'not successful') {
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.color = 'red';
+        message.innerHTML = data.message;
+      }
+      if (data.status === 'operation not implemented') {
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.color = 'red';
+        message.innerHTML = data.message;
+      }
+      if (data.status === 'operation not successful') {
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.color = 'red';
+        message.innerHTML = data.message;
+      }
+      if (data.status === 'operation not successful' && data.status === 500) {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').style.display = 'block';
+        message.innerHTML = data.message;
+      }
+      document.getElementById('loader').style.display = 'block';
       localStorage.setItem('Authorization', data.data.token);
 
       function jwtDecode(t) {
@@ -43,6 +66,7 @@ const userSignUp = (e) => {
       }
       const userToken = data.data.token;
       const decoded = jwtDecode(userToken);
+      document.getElementById('loader').style.display = 'none';
       if (decoded.payload.admin === 'undefined' || decoded.payload.admin === 'false') {
         window.location.assign('userpage.html');
       } else {
