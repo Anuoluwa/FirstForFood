@@ -2,12 +2,17 @@ const signup = document.querySelector('#signupform');
 const username = document.querySelector('.username');
 const email = document.querySelector('.email');
 const password = document.querySelector('.password');
+const confirm = document.querySelector('.confirm-password');
 const phone = document.querySelector('.phone');
 const address = document.querySelector('.address');
 
+if (password !== confirm) {
+  document.getElementById('').style
+}
+
 const userSignUp = (e) => {
   e.preventDefault();
-  const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/signup';
+  const apiUrl = 'http://localhost:4000/api/v2/auth/signup';
   const payload = {
     username: username.value,
     email: email.value,
@@ -15,6 +20,7 @@ const userSignUp = (e) => {
     phone: phone.value,
     address: address.value,
   };
+  document.getElementById('loader').style.display = 'block';
   fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -25,6 +31,7 @@ const userSignUp = (e) => {
   })
     .then(res => res.json())
     .then((data) => {
+      document.getElementById('loader').style.display = 'none';
       localStorage.setItem('Authorization', data.data.token);
 
       function jwtDecode(t) {

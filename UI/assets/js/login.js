@@ -1,6 +1,7 @@
 const signin = document.querySelector('#signinform');
 const name = document.querySelector('.username-login');
 const pass = document.querySelector('.password-login');
+
 const userLogin = (e) => {
   e.preventDefault();
   const apiUrl = 'https://swiftfood.herokuapp.com/api/v2/auth/login';
@@ -8,6 +9,7 @@ const userLogin = (e) => {
     username: name.value,
     password: pass.value,
   };
+  document.getElementById('loader').style.display = 'block';
   fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -18,6 +20,7 @@ const userLogin = (e) => {
   })
     .then(res => res.json())
     .then((data) => {
+      document.getElementById('loader').style.display = 'none';
       localStorage.setItem('Authorization', data.token);
 
       function jwtDecode(t) {

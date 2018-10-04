@@ -38,6 +38,9 @@
     </header>
     <!-- modal -->
     <section>
+        <div id="loader" class="hide">
+            <img src="assets/images/Rolling.gif" alt="loader">
+        </div>
         <div id="signinform" class="modal">
             <form class="modal-content animate" action="profile.html">
                 <div class="imgcontainer">
@@ -60,7 +63,7 @@
                             <strong>*Password:</strong>
                     </div>
                     <div class="rightmodalTab">
-                        <input id="input" class="username-password" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password" required>
+                        <input id="input" class="password-login" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password" required>
                         <span id="error-password" class="error"></span>
                     </div>
 
@@ -110,6 +113,16 @@
                             required>
                             <span id="error-password" class="error"></span>
                     </div>
+
+                    <div class="modalTab">
+                            <label id="password-label" for="password">
+                                <strong>*Confirm Password:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" class="confirm-password" type="password" name="password" minlength="6" maxlength="12" placeholder="Confirm password"
+                                required>
+                                <span id="error-password" class="error"></span>
+                        </div>
 
                     <div class="modalTab">
                         <label id="phone-label" for="phone">
