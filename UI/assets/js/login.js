@@ -3,7 +3,7 @@ const name = document.querySelector('.username-login');
 const pass = document.querySelector('.password-login');
 const userLogin = (e) => {
   e.preventDefault();
-  const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/login';
+  const apiUrl = 'https://swiftfood.herokuapp.com/api/v2/auth/login';
   const payload = {
     username: name.value,
     password: pass.value,
@@ -18,7 +18,8 @@ const userLogin = (e) => {
   })
     .then(res => res.json())
     .then((data) => {
-      localStorage.setItem('Authorization', data.data.token);
+      localStorage.setItem('Authorization', data.token);
+
       function jwtDecode(t) {
         const token = {};
         token.raw = t;
@@ -26,7 +27,8 @@ const userLogin = (e) => {
         token.payload = JSON.parse(window.atob(t.split('.')[1]));
         return (token);
       }
-      const userToken = data.data.token;
+
+      const userToken = data.token;
       const decoded = jwtDecode(userToken);
       if (decoded.payload.admin === 'undefined' || decoded.payload.admin === 'false') {
         window.location.assign('userpage.html');
