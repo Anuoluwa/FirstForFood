@@ -6,17 +6,16 @@ const confirmPassword = document.querySelector('.confirm-password');
 const passwordError = document.querySelector('#confirm-pass');
 const phone = document.querySelector('.phone');
 const address = document.querySelector('.address');
-const message = document.querySelector('#myMessage');
+const msg = document.querySelector('#myMessage');
 
 
 const userSignUp = (e) => {
   e.preventDefault();
-  console.log(password);
   if (String(password.value).trim() !== String(confirmPassword.value).trim()) {
     passwordError.textContent = 'Your password does not mismatch';
     return null;
   }
-  const apiUrl = 'https://swiftfoodapp.herokuapp.com//api/v2/auth/signup';
+  const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/signup';
   const payload = {
     username: username.value,
     email: email.value,
@@ -37,22 +36,22 @@ const userSignUp = (e) => {
       if (data.status === 'not successful') {
         document.getElementById('message').style.display = 'block';
         document.getElementById('message').style.color = 'red';
-        message.innerHTML = data.message;
+        msg.innerHTML = data.message;
       }
       if (data.status === 'operation not implemented') {
         document.getElementById('message').style.display = 'block';
         document.getElementById('message').style.color = 'red';
-        message.innerHTML = data.message;
+        msg.innerHTML = data.message;
       }
       if (data.status === 'operation not successful') {
         document.getElementById('message').style.display = 'block';
         document.getElementById('message').style.color = 'red';
-        message.innerHTML = data.message;
+        msg.innerHTML = data.message;
       }
       if (data.status === 'operation not successful' && data.status === 500) {
         document.getElementById('message').style.color = 'red';
         document.getElementById('message').style.display = 'block';
-        message.innerHTML = data.message;
+        msg.innerHTML = data.message;
       }
       document.getElementById('loader').style.display = 'block';
       localStorage.setItem('Authorization', data.data.token);

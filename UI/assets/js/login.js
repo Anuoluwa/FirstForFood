@@ -1,7 +1,7 @@
 const signin = document.querySelector('#signinform');
 const name = document.querySelector('.username-login');
 const pass = document.querySelector('.password-login');
-const message = document.querySelector('#myMessage');
+const errorMsg = document.querySelector('#myMessage');
 
 const userLogin = (e) => {
   e.preventDefault();
@@ -24,22 +24,22 @@ const userLogin = (e) => {
       if (data.status === 'user details not found') {
         document.getElementById('message').style.display = 'block';
         document.getElementById('message').style.color = 'red';
-        message.innerHTML = data.message;
+        errorMsg.innerHTML = data.message;
       }
       if (data.status === 'operation not implemented') {
         document.getElementById('message').style.display = 'block';
         document.getElementById('message').style.color = 'red';
-        message.innerHTML = data.message;
+        errorMsg.innerHTML = data.message;
       }
       if (data.status === 'bad request') {
         document.getElementById('message').style.display = 'block';
         document.getElementById('message').style.color = 'red';
-        message.innerHTML = data.message;
+        errorMsg.innerHTML = data.message;
       }
       if (data.status === 'operation not successful' && data.status === 500) {
         document.getElementById('message').style.color = 'red';
         document.getElementById('message').style.display = 'block';
-        message.innerHTML = data.message;
+        errorMsg.innerHTML = data.message;
       }
       document.getElementById('loader').style.display = 'none';
       localStorage.setItem('Authorization', data.token);
@@ -57,7 +57,7 @@ const userLogin = (e) => {
       if (decoded.payload.admin === 'undefined' || decoded.payload.admin === 'false') {
         window.location.assign('userpage.html');
       } else {
-        window.location.assign('adminpage.html');
+        window.location.assign('assets/admin/adminpage.html');
       }
     });
 };
