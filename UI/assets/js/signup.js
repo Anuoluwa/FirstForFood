@@ -12,7 +12,7 @@ const msg = document.querySelector('#myMessage');
 const userSignUp = (e) => {
   e.preventDefault();
   if (String(password.value).trim() !== String(confirmPassword.value).trim()) {
-    passwordError.textContent = 'Your password does not mismatch';
+    passwordError.textContent = 'Your password does not match';
     return null;
   }
   const apiUrl = 'https://swiftfoodapp.herokuapp.com/api/v2/auth/signup';
