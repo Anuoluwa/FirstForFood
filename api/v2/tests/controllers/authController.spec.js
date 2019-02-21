@@ -201,40 +201,4 @@ describe('/POST auth/login test suite', () => {
         done();
       });
   });
-  // it('should login a returning user', (done) => {
-  //   request(app)
-  //     .post('/api/v2/auth/login')
-  //     .set('Accept', 'application/json')
-  //     .send({
-  //       username: 'johnjohn',
-  //       password: 'johnjohn',
-  //     })
-  //     .expect(200)
-  //     .end((err, res) => {
-  //       expect(res.body).to.be.an('object');
-  //       expect(res.body).to.have.a.property('message');
-  //       expect(res.body).to.have.a.property('status');
-  //       expect(res.body.status).to.equal('operation successful');
-  //       expect(res.body.message).to.equal('you are welcome, login successful');
-  //       done();
-  //     });
-  // });
-  // it('should not login a registered user with wrong password ', (done) => {
-  //   request(app)
-  //     .post('/api/v2/auth/login')
-  //     .set('Accept', 'application/json')
-  //     .send({
-  //       username: 'johnlucass',
-  //       password: 'johnlucass',
-  //     })
-  //     .end((err, res) => {
-  //       expect(res.status).to.eql(400);
-  //       expect(res.body).to.be.an('object');
-  //       expect(res.body).to.have.a.property('message');
-  //       expect(res.body).to.have.a.property('status');
-  //       expect(res.body.status).to.equal('bad request');
-  //       expect(res.body.message).to.equal('password mismatch');
-  //       done();
-  //     });
-  // });
 });

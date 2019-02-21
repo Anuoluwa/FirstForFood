@@ -152,7 +152,8 @@ describe('Test suite for orders controller', () => {
           password: 'testadmin',
         })
         .end((err, res) => {
-          adminToken = res.body.data.token;
+          const { token } = res.body;
+          adminToken = token;
           done();
         });
     });
@@ -249,31 +250,6 @@ describe('Test suite for orders controller', () => {
           done();
         });
     });
-    // it('should return all orders with success message', (done) => {
-    //   request(app)
-    //     .get('/api/v2/orders/1')
-    //     .set({ Authorization: `token ${adminToken}` })
-    //     .end((err, res) => {
-    //       expect(res.status).to.eql(200);
-    //       expect(res.body.status).to.equal('successful');
-    //       expect(res.body.message).to.equal('order details');
-    //       done();
-    //     });
-    // });
-    // it('should return one specific orders', (done) => {
-    //   request(app)
-    //     .get('/api/v2/orders/1')
-    //     .set({ Authorization: `token ${adminToken}` })
-    //     .end((err, res) => {
-    //       expect(res.status).to.eql(200);
-    //       expect(res.body).to.have.a.property('status');
-    //       expect(res.body).to.have.a.property('message');
-    //       expect(res.body).to.have.a.property('order');
-    //       expect(res.body).to.have.a.property('userDetails');
-    //       expect(res.body).to.have.a.property('menuIdDetails');
-    //       done();
-    //     });
-    // });
     it('should return order succcess without null', (done) => {
       request(app)
         .get('/api/v2/orders/1')

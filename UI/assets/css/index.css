@@ -75,6 +75,21 @@ a:hover {
   ========================================
 */
 
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, .9);
+  text-align: center;
+  padding-top: 200px;
+  z-index: 1000;
+}
+
+.hide {
+  display: none;
+}
+
 header {
     background-color: #010A26;
     width: 100%;
@@ -982,4 +997,8 @@ footer ul li a {
       
 
     }
+}
+.error {
+  color: red;
+  font-weight: 400;
 }
